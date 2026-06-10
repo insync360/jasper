@@ -61,7 +61,11 @@ function last10(phone) {
 }
 
 /**
- * Find the most recent Lead matching a WhatsApp number (by last 10 digits).
+ * Find the most recent OPEN Lead matching a WhatsApp number (by last 10 digits).
+ * Converted leads are excluded — once a lead converts it is no longer an open enquiry,
+ * and a converted lead can be an orphan (its Account/Contact/Opportunity were deleted but
+ * the lead survives with dangling pointers). Returning customers are resolved separately
+ * via findCustomerByPhone.
  * @returns {Promise<object|null>}
  */
 async function findLeadByPhone(waNumber) {
@@ -71,10 +75,35 @@ async function findLeadByPhone(waNumber) {
   const soql =
     `SELECT Id, Name, FirstName, Status, Source__c, Buying_Span__c, ` +
     `Lost_Reason__c, OwnerId FROM Lead ` +
-    `WHERE Phone = '${p}' OR MobilePhone = '${p}' ` +
+    `WHERE (Phone = '${p}' OR MobilePhone = '${p}') AND IsConverted = false ` +
     `ORDER BY CreatedDate DESC LIMIT 1`;
   const res = await conn.query(soql);
   return res.records[0] || null;
+}
+
+/**
+ * Find a returning CUSTOMER (a converted lead's Contact) by WhatsApp number. Matched directly
+ * on the Contact's phone — never via a converted lead's pointers — so deleted customers don't
+ * resurface. Returns the normalized identity used by the bot's "customer path".
+ * @returns {Promise<{contactId:string, accountId:string|null, name:string, firstName:string|null}|null>}
+ */
+async function findCustomerByPhone(waNumber) {
+  const conn = await getConnection();
+  const p = esc(last10(waNumber));
+  if (!p) return null;
+  const res = await conn.query(
+    `SELECT Id, Name, FirstName, AccountId FROM Contact ` +
+      `WHERE Phone LIKE '%${p}%' OR MobilePhone LIKE '%${p}%' ` +
+      `ORDER BY CreatedDate DESC LIMIT 1`
+  );
+  const c = res.records[0];
+  if (!c) return null;
+  return {
+    contactId: c.Id,
+    accountId: c.AccountId || null,
+    name: c.Name,
+    firstName: c.FirstName || (c.Name ? c.Name.split(' ')[0] : null),
+  };
 }
 
 /**
@@ -137,14 +166,16 @@ async function updateLeadName(leadId, profileName) {
 }
 
 /**
- * Upsert the consolidated WhatsApp conversation transcript record.
- * @param {{convoId?:string, leadId?:string, phone:string, transcript:string, count:number}} p
+ * Upsert the consolidated WhatsApp conversation transcript record. Linked to the Lead
+ * (open enquiry) or the Contact (returning customer), whichever the conversation belongs to.
+ * @param {{convoId?:string, leadId?:string, contactId?:string, phone:string, transcript:string, count:number}} p
  * @returns {Promise<string>} the WhatsApp_Conversation__c record id
  */
-async function saveConversation({ convoId, leadId, phone, transcript, count }) {
+async function saveConversation({ convoId, leadId, contactId, phone, transcript, count }) {
   const conn = await getConnection();
   const rec = {
     Lead__c: leadId || null,
+    Contact__c: contactId || null,
     Contact_Number__c: phone,
     Transcript__c: String(transcript || '').slice(0, 131000),
     Message_Count__c: count || 0,
@@ -219,6 +250,78 @@ async function bookTestDrive(d) {
     console.warn('[sf] lead status update skipped:', e.message)
   );
   return res;
+}
+
+/**
+ * Book a test drive for a returning CUSTOMER (no open Lead). Test_Drive__c only links to a
+ * Lead or an Opportunity, so we open a fresh Opportunity under the customer's Account (a
+ * returning customer wanting another vehicle is a new deal) and link the test drive to it.
+ * Opportunity creation is best-effort: if it fails (validation rules, missing Account), we
+ * still create the Test_Drive__c unlinked and log a fallback Task so the request is never lost.
+ * @param {object} d {accountId, contactId, customerName, phone, rideType:'HTR'|'STR', vehicle,
+ *                     dateIso, dl, locLat, locLng, locName, locUrl}
+ * @returns {Promise<{id:string, opportunityId:string|null}>}
+ */
+async function createCustomerTestDrive(d) {
+  const conn = await getConnection();
+  const who = d.customerName || 'Customer';
+
+  // 1) Open a new Opportunity under the customer's Account (best-effort).
+  let oppId = null;
+  if (d.accountId) {
+    try {
+      const close = new Date();
+      close.setDate(close.getDate() + 30);
+      const opp = await conn.sobject('Opportunity').create({
+        Name: `${who} – ${d.vehicle || 'Vehicle'} (Test Drive)`.slice(0, 120),
+        StageName: 'Prospecting',
+        CloseDate: close.toISOString().slice(0, 10),
+        AccountId: d.accountId,
+      });
+      oppId = opp.id;
+    } catch (e) {
+      console.warn('[sf] customer opportunity create failed:', e.message);
+    }
+  }
+
+  // 2) Create the Test_Drive__c, linked to the Opportunity when we have one.
+  const rec = {
+    Name: `${who} – ${d.vehicle || 'Test Drive'}`.slice(0, 80),
+    Ride_Type__c: d.rideType,
+    Test_Drive_Status__c: 'Scheduled',
+    Vehicle_Model__c: d.vehicle,
+  };
+  if (oppId) rec.Opportunity__c = oppId;
+  if (d.dateIso) {
+    rec.Test_Drive_Date__c = d.dateIso;
+    rec.Test_Ride_Date__c = d.dateIso;
+  }
+  if (d.dl) rec.Drivers_License_Number__c = d.dl;
+  if (d.phone) rec.Phone__c = d.phone;
+  if (d.locName) rec['Address__Street__s'] = String(d.locName).slice(0, 255);
+  if (d.locLat != null) rec['Address__Latitude__s'] = d.locLat;
+  if (d.locLng != null) rec['Address__Longitude__s'] = d.locLng;
+  if (d.locUrl) rec.Location_URL__c = d.locUrl;
+  const res = await conn.sobject('Test_Drive__c').create(rec);
+
+  // 3) If we couldn't open an Opportunity, log a Task on the Contact so it's actioned.
+  if (!oppId) {
+    try {
+      const task = {
+        Subject: '🛠️ Returning customer requested a test drive',
+        Description: `Vehicle: ${d.vehicle || 'n/a'} · Ride: ${d.rideType || 'n/a'} · DL: ${d.dl || 'n/a'}`,
+        Priority: 'Normal',
+        Status: 'Open',
+      };
+      if (d.contactId) task.WhoId = d.contactId;
+      task.Phone_number__c = last10(d.phone);
+      await conn.sobject('Task').create(task);
+    } catch (e) {
+      console.warn('[sf] customer test-drive fallback Task failed:', e.message);
+    }
+  }
+
+  return { id: res.id, opportunityId: oppId };
 }
 
 /**
@@ -385,6 +488,8 @@ async function logReferral(waNumber, text) {
 module.exports = {
   getConnection,
   findLeadByPhone,
+  findCustomerByPhone,
+  createCustomerTestDrive,
   confirmDelivery,
   escalateDeliveryFeedback,
   logReferral,

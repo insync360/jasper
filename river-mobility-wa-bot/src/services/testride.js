@@ -72,7 +72,7 @@ async function start(ctx, presetProductId) {
 
 /** Advance the booking based on the inbound message. */
 async function handle(inbound, ctx) {
-  const { from, lead, firstName } = ctx;
+  const { from, party, firstName } = ctx;
   const state = memory.getState(from);
   if (!state) return;
   const id = inbound.id;
@@ -179,25 +179,33 @@ async function handle(inbound, ctx) {
     case 'confirm': {
       if (id === 'td_confirm') {
         let ok = false;
-        if (lead) {
-          try {
-            await salesforce.bookTestDrive({
-              leadId: lead.Id,
-              customerName: lead.Name || firstName,
-              phone: from,
-              rideType: state.rideType,
-              vehicle: state.vehicle,
-              dateIso: state.dateIso,
-              dl: state.dl,
-              locLat: state.locLat,
-              locLng: state.locLng,
-              locName: state.locName,
-              locUrl: state.locUrl
+        const common = {
+          customerName: (party && party.name) || firstName,
+          phone: from,
+          rideType: state.rideType,
+          vehicle: state.vehicle,
+          dateIso: state.dateIso,
+          dl: state.dl,
+          locLat: state.locLat,
+          locLng: state.locLng,
+          locName: state.locName,
+          locUrl: state.locUrl
+        };
+        try {
+          if (party && party.kind === 'lead') {
+            await salesforce.bookTestDrive({ leadId: party.leadId, ...common });
+            ok = true;
+          } else if (party && party.kind === 'customer') {
+            // Returning customer: link the test drive to a new Opportunity under their Account.
+            await salesforce.createCustomerTestDrive({
+              accountId: party.accountId,
+              contactId: party.contactId,
+              ...common
             });
             ok = true;
-          } catch (e) {
-            console.warn('[testride] booking failed:', e.message);
           }
+        } catch (e) {
+          console.warn('[testride] booking failed:', e.message);
         }
         memory.clearState(from);
         await whatsapp.sendButtons(

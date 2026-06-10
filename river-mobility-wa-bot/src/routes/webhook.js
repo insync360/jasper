@@ -117,33 +117,63 @@ router.post('/', async (req, res) => {
       return;
     }
 
-    // Salesforce: find the Lead for this number.
-    let lead = null;
+    // Salesforce identity resolution (3-way):
+    //   1. open Lead (IsConverted=false)  -> lead path (existing enquiry)
+    //   2. else Contact by phone          -> customer path (returning, converted customer)
+    //   3. else                           -> onboarding (create a new Lead)
+    // Converted leads are deliberately ignored (see findLeadByPhone) so orphaned converted
+    // leads don't get re-greeted; a returning customer is matched on their Contact directly.
+    let party = null;
     try {
-      lead = await salesforce.findLeadByPhone(from);
+      const openLead = await salesforce.findLeadByPhone(from);
+      if (openLead) {
+        party = {
+          kind: 'lead',
+          leadId: openLead.Id,
+          name: openLead.Name,
+          firstName: openLead.FirstName || openLead.Name?.split(' ')[0] || null,
+          status: openLead.Status,
+          source: openLead.Source__c,
+          buyingSpan: openLead.Buying_Span__c,
+          raw: openLead,
+        };
+      } else {
+        const cust = await salesforce.findCustomerByPhone(from);
+        if (cust) {
+          party = {
+            kind: 'customer',
+            contactId: cust.contactId,
+            accountId: cust.accountId,
+            name: cust.name,
+            firstName: cust.firstName,
+            raw: cust,
+          };
+        }
+      }
     } catch (e) {
       console.warn('[webhook] SF lookup skipped:', e.message);
     }
 
-    // ONBOARDING (stateful): an unknown number is walked through pincode -> name -> DOB
-    // (name & DOB skippable) before the Lead is created. While no Lead exists we stay in
-    // onboarding; each reply advances a step, then we create the Lead + show the menu.
-    if (!lead) {
+    // ONBOARDING (stateful): an unknown number (no open lead, no customer) is walked through
+    // pincode -> name -> DOB (name & DOB skippable) before the Lead is created. While no party
+    // exists we stay in onboarding; each reply advances a step, then we create the Lead + menu.
+    if (!party) {
       await onboardNewNumber(from, profileName, inbound);
       return;
     }
 
-    const firstName =
-      lead?.FirstName || lead?.Name?.split(' ')[0] || profileName?.split(' ')[0] || null;
-    const ctx = { from, lead, firstName, profileName };
+    // Back-compat: flow.js reads ctx.lead (null for customers, which it already guards for).
+    const lead = party.kind === 'lead' ? party.raw : null;
+    const firstName = party.firstName || profileName?.split(' ')[0] || null;
+    const ctx = { from, lead, party, firstName, profileName };
 
     // If a test-drive booking is in progress, route to it — unless the user
     // explicitly escapes via the main menu or a greeting.
     const escaping = inbound.id === 'main' || (inbound.kind === 'text' && menu.isGreeting(inbound.text));
     if (testride.isActive(from) && !escaping) {
       await testride.handle(inbound, ctx);
-      flushTranscript(lead.Id, from);
-      await saveConversationRecord(lead.Id, from);
+      flushTranscript(party, from);
+      await saveConversationRecord(party, from);
       return;
     }
     if (testride.isActive(from) && escaping) {
@@ -159,19 +189,22 @@ router.post('/', async (req, res) => {
     } else {
       // Free-typed text -> Claude WITH conversation memory. Then a Menu button to resume.
       console.log('[webhook] free text -> LLM (with memory)');
-      const contextNote = lead
-        ? `Existing Lead. Name: ${lead.Name}. Status: ${lead.Status || 'n/a'}. ` +
-          `Source: ${lead.Source__c || 'n/a'}. Buying span: ${lead.Buying_Span__c || 'n/a'}. ` +
-          `Address them by first name (${firstName}) and be context-aware.`
-        : 'No matching Lead; treat as a new prospect and be welcoming.';
+      const contextNote =
+        party.kind === 'customer'
+          ? `Returning CUSTOMER (already purchased / converted). Name: ${party.name}. ` +
+            `Greet them warmly as an existing customer by first name (${firstName}); ` +
+            `they may want service, accessories, or another vehicle.`
+          : `Existing Lead. Name: ${party.name}. Status: ${party.status || 'n/a'}. ` +
+            `Source: ${party.source || 'n/a'}. Buying span: ${party.buyingSpan || 'n/a'}. ` +
+            `Address them by first name (${firstName}) and be context-aware.`;
       const reply = await ai.generateReply(memory.getHistory(from), { contextNote });
       // Offer a real action (human handoff) rather than a generic menu. Users can type "menu" to return.
       await whatsapp.sendButtons(from, reply, [{ id: 'advisor', title: '🧑‍💼 Talk to our team' }]);
     }
 
-    // Persist the transcript: per-message Tasks on the timeline + consolidated record.
-    flushTranscript(lead.Id, from);
-    await saveConversationRecord(lead.Id, from);
+    // Persist the transcript: consolidated record linked to the lead or the customer's contact.
+    flushTranscript(party, from);
+    await saveConversationRecord(party, from);
   } catch (err) {
     console.error('[webhook] processing error:', err.response?.data || err.message);
   }
@@ -183,22 +216,30 @@ router.post('/', async (req, res) => {
  * create a Task per message, so the Tasks list stays reserved for real actions (callbacks,
  * escalations, referrals) instead of being flooded with message logs.
  */
-function flushTranscript(leadId, phone) {
-  if (!leadId) return;
+function flushTranscript(party, phone) {
+  if (!party) return;
   memory.takeUnsynced(phone); // drain the unsynced buffer; no per-message Tasks created
 }
 
 /**
- * Upsert the consolidated conversation transcript into WhatsApp_Conversation__c,
- * so the full chat is saved in one record for future reference.
+ * Upsert the consolidated conversation transcript into WhatsApp_Conversation__c, linked to the
+ * Lead (open enquiry) or the Contact (returning customer), so the full chat is saved in one record.
+ * @param {{kind:'lead'|'customer', leadId?:string, contactId?:string}} party
  */
-async function saveConversationRecord(leadId, phone) {
-  if (!leadId) return;
+async function saveConversationRecord(party, phone) {
+  if (!party) return;
   const { text, count } = memory.getTranscript(phone);
   if (!text) return;
   try {
     const convoId = memory.getConvoId(phone);
-    const id = await salesforce.saveConversation({ convoId, leadId, phone, transcript: text, count });
+    const id = await salesforce.saveConversation({
+      convoId,
+      leadId: party.kind === 'lead' ? party.leadId : null,
+      contactId: party.kind === 'customer' ? party.contactId : null,
+      phone,
+      transcript: text,
+      count,
+    });
     if (id && !convoId) memory.setConvoId(phone, id);
   } catch (e) {
     console.warn('[webhook] saveConversation failed:', e.message);
@@ -476,8 +517,9 @@ async function onboardNewNumber(from, profileName, inbound) {
       flow.MAIN_SECTIONS
     );
     // Now that the Lead exists, persist the whole onboarding conversation verbatim.
-    flushTranscript(lead.id, from);
-    await saveConversationRecord(lead.id, from);
+    const party = { kind: 'lead', leadId: lead.id };
+    flushTranscript(party, from);
+    await saveConversationRecord(party, from);
     return lead;
   }
 
