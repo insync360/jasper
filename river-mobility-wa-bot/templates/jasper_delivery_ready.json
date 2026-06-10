@@ -5,9 +5,15 @@
   "components": [
     {
       "type": "BODY",
-      "text": "Hi {{1}}, great news! 🎉 Your {{2}} (order {{3}}) is ready for delivery. Our team will reach out to schedule a convenient time. Thank you for choosing Jasper Industries!",
+      "text": "Hi {{1}}, great news! 🎉 Your {{2}} (Order {{3}}) is ready for delivery. Our team will reach out to schedule a convenient time. Thank you for choosing Jasper Industries!",
       "example": { "body_text": [["Ravi", "M&HCV Construck (Tippers)", "00109739"]] }
     },
-    { "type": "FOOTER", "text": "Jasper Industries" }
+    { "type": "FOOTER", "text": "Jasper Industries" },
+    {
+      "type": "BUTTONS",
+      "buttons": [
+        { "type": "QUICK_REPLY", "text": "Confirm Delivery" }
+      ]
+    }
   ]
 }
