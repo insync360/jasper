@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Approval_Statuse__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(
+    ISPICKVAL(Approval_Statuses__c, &quot;Approved&quot;), &quot;Approved&quot;,
+    IF(
+        ISPICKVAL(Approval_Statuses__c, &quot;Rejected&quot;), &quot;Rejected&quot;,
+        IF(
+            ISPICKVAL(Approval_Statuses__c, &quot;Pending&quot;), &quot;Pending&quot;,
+            &quot; &quot;
+        )
+    )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Approval Status</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

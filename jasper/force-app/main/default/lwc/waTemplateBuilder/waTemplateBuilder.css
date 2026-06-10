@@ -1,0 +1,82 @@
+.wa-thead {
+    font-weight: 700;
+    border-bottom: 2px solid #d8dde6;
+    padding: 6px 0;
+    color: #514f4d;
+}
+.wa-row {
+    border-bottom: 1px solid #ececec;
+    padding: 10px 0;
+    align-items: flex-start;
+}
+.wa-name {
+    font-weight: 700;
+    margin-bottom: 4px;
+    word-break: break-all;
+}
+.wa-status {
+    margin-top: 6px;
+    font-weight: 700;
+    font-size: 0.8rem;
+}
+.status-APPROVED {
+    color: #2e844a;
+}
+.status-PENDING {
+    color: #a86403;
+}
+.status-REJECTED,
+.status-Failed {
+    color: #ba0517;
+}
+
+/* WhatsApp-style chat bubble */
+.wa-bubble {
+    background: #d9fdd3;
+    border-radius: 8px;
+    padding: 8px 10px;
+    max-width: 340px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.13);
+}
+.wa-header {
+    font-weight: 700;
+    margin: 0 0 4px 0;
+    color: #111b21;
+}
+.wa-header-media {
+    background: #c5e7bb;
+    border-radius: 6px;
+    padding: 22px;
+    text-align: center;
+    color: #3a5a40;
+    margin-bottom: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+.wa-body {
+    margin: 0;
+    white-space: pre-wrap;
+    font-size: 0.9rem;
+    color: #111b21;
+    line-height: 1.3;
+}
+.wa-footer {
+    margin: 6px 0 0 0;
+    font-size: 0.75rem;
+    color: #667781;
+}
+.wa-buttons {
+    max-width: 340px;
+    margin-top: 4px;
+}
+.wa-btn {
+    background: #ffffff;
+    color: #027eb5;
+    text-align: center;
+    padding: 8px;
+    border-radius: 7px;
+    margin-top: 4px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}

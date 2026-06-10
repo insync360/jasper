@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Lost_Reason__c</fullName>
+    <label>Lost Reason</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Out of Delivery Area</fullName>
+                <default>false</default>
+                <label>Out of Delivery Area</label>
+            </value>
+            <value>
+                <fullName>Casual enquiry</fullName>
+                <default>false</default>
+                <label>Casual enquiry</label>
+            </value>
+            <value>
+                <fullName>Customer not enquired</fullName>
+                <default>false</default>
+                <label>Customer not enquired</label>
+            </value>
+            <value>
+                <fullName>High expectations on product</fullName>
+                <default>false</default>
+                <label>High expectations on product</label>
+            </value>
+            <value>
+                <fullName>Lost to competitor</fullName>
+                <default>false</default>
+                <label>Lost to Competitor</label>
+            </value>
+            <value>
+                <fullName>Retail Finance Issues</fullName>
+                <default>false</default>
+                <label>Retail Finance Issues</label>
+            </value>
+            <value>
+                <fullName>Price is high</fullName>
+                <default>false</default>
+                <label>Price is high</label>
+            </value>
+            <value>
+                <fullName>Purchased in other stores</fullName>
+                <default>false</default>
+                <label>Purchased in other stores</label>
+            </value>
+            <value>
+                <fullName>RNR</fullName>
+                <default>false</default>
+                <label>RNR</label>
+            </value>
+            <value>
+                <fullName>Others - need reason</fullName>
+                <default>false</default>
+                <label>Others - need reason</label>
+            </value>
+            <value>
+                <fullName>Already Purchased Elsewhere</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Already Purchased Elsewhere</label>
+            </value>
+            <value>
+                <fullName>Battery not Detachable</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Battery not Detachable</label>
+            </value>
+            <value>
+                <fullName>Invalid Contact Information</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Invalid Contact Information</label>
+            </value>
+            <value>
+                <fullName>Junk</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Junk</label>
+            </value>
+            <value>
+                <fullName>Lack of Budget</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Lack of Budget</label>
+            </value>
+            <value>
+                <fullName>Location Issue</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Location Issue</label>
+            </value>
+            <value>
+                <fullName>No Buying Intent</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>No Buying Intent</label>
+            </value>
+            <value>
+                <fullName>Not Interested in Buying</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Not Interested in Buying</label>
+            </value>
+            <value>
+                <fullName>Not the Decision Maker</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Not the Decision Maker</label>
+            </value>
+            <value>
+                <fullName>Others</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Others</label>
+            </value>
+            <value>
+                <fullName>Pricing too High</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Pricing too High</label>
+            </value>
+            <value>
+                <fullName>Product Quality Issues</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Product Quality Issues</label>
+            </value>
+            <value>
+                <fullName>Timing Not Right</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Timing Not Right</label>
+            </value>
+            <value>
+                <fullName>Unresponsive- Max Attempt</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Unresponsive- Max Attempt</label>
+            </value>
+            <value>
+                <fullName>Wrong Product Fit</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Wrong Product Fit</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Finance_Name__c</fullName>
+    <label>Finance</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Arihant Credit Corporation</fullName>
+                <default>false</default>
+                <label>Arihant Credit Corporation</label>
+            </value>
+            <value>
+                <fullName>Bajaj Finance Limited</fullName>
+                <default>false</default>
+                <label>Bajaj Finance Limited</label>
+            </value>
+            <value>
+                <fullName>Bank Of India</fullName>
+                <default>false</default>
+                <label>Bank Of India</label>
+            </value>
+            <value>
+                <fullName>Bank Of Maharashtra</fullName>
+                <default>false</default>
+                <label>Bank Of Maharashtra</label>
+            </value>
+            <value>
+                <fullName>Bank of Baroda</fullName>
+                <default>false</default>
+                <label>Bank of Baroda</label>
+            </value>
+            <value>
+                <fullName>Bike Bazaar</fullName>
+                <default>false</default>
+                <label>Bike Bazaar</label>
+            </value>
+            <value>
+                <fullName>Canara Bank</fullName>
+                <default>false</default>
+                <label>Canara Bank</label>
+            </value>
+            <value>
+                <fullName>Central Bank of India</fullName>
+                <default>false</default>
+                <label>Central Bank of India</label>
+            </value>
+            <value>
+                <fullName>Ecofy Finance Private Limited</fullName>
+                <default>false</default>
+                <label>Ecofy Finance Private Limited</label>
+            </value>
+            <value>
+                <fullName>Ernakulam District Police Credit Co-Operative Society LTD</fullName>
+                <default>false</default>
+                <label>Ernakulam District Police Credit Co-Operative Society LTD</label>
+            </value>
+            <value>
+                <fullName>ESAF Small Finance Bank Ltd</fullName>
+                <default>false</default>
+                <label>ESAF Small Finance Bank Ltd</label>
+            </value>
+            <value>
+                <fullName>EVEREST FINANCE COMPANY</fullName>
+                <default>false</default>
+                <label>EVEREST FINANCE COMPANY</label>
+            </value>
+            <value>
+                <fullName>FACT CD Employees Co-Operative Credit Society LTD</fullName>
+                <default>false</default>
+                <label>FACT CD Employees Co-Operative Credit Society LTD</label>
+            </value>
+            <value>
+                <fullName>Gadhinglaj urban co-opertive bank</fullName>
+                <default>false</default>
+                <label>Gadhinglaj urban co-opertive bank</label>
+            </value>
+            <value>
+                <fullName>Greaves Finance Limited</fullName>
+                <default>false</default>
+                <label>Greaves Finance Limited</label>
+            </value>
+            <value>
+                <fullName>Hubballi Saraku SSPS Niyamit</fullName>
+                <default>false</default>
+                <label>Hubballi Saraku SSPS Niyamit</label>
+            </value>
+            <value>
+                <fullName>ICICI Bank Limited</fullName>
+                <default>false</default>
+                <label>ICICI Bank Limited</label>
+            </value>
+            <value>
+                <fullName>IDBI BANK LTD</fullName>
+                <default>false</default>
+                <label>IDBI BANK LTD</label>
+            </value>
+            <value>
+                <fullName>INDIAN BANK (BRANCH: HARBOUR)</fullName>
+                <default>false</default>
+                <label>INDIAN BANK (BRANCH: HARBOUR)</label>
+            </value>
+            <value>
+                <fullName>INDIAN BANK - MADHAVARAM BRANCH</fullName>
+                <default>false</default>
+                <label>INDIAN BANK - MADHAVARAM BRANCH</label>
+            </value>
+            <value>
+                <fullName>INDIAN OVERSEAS BANK</fullName>
+                <default>false</default>
+                <label>INDIAN OVERSEAS BANK</label>
+            </value>
+            <value>
+                <fullName>J &amp; K Bank</fullName>
+                <default>false</default>
+                <label>J &amp; K Bank</label>
+            </value>
+            <value>
+                <fullName>Janaseva Cooperative Credit Society Ltd</fullName>
+                <default>false</default>
+                <label>Janaseva Cooperative Credit Society Ltd</label>
+            </value>
+            <value>
+                <fullName>Karnataka Bank Ltd</fullName>
+                <default>false</default>
+                <label>Karnataka Bank Ltd</label>
+            </value>
+            <value>
+                <fullName>Karnataka Vikas Grameena Bank</fullName>
+                <default>false</default>
+                <label>Karnataka Vikas Grameena Bank</label>
+            </value>
+            <value>
+                <fullName>Kerala State Backward Classes Development Corporation Ltd.</fullName>
+                <default>false</default>
+                <label>Kerala State Backward Classes Development Corporation Ltd.</label>
+            </value>
+            <value>
+                <fullName>KERALA GRAMIN BANK</fullName>
+                <default>false</default>
+                <label>KERALA GRAMIN BANK</label>
+            </value>
+            <value>
+                <fullName>Kodagu dcc bank Private limited</fullName>
+                <default>false</default>
+                <label>Kodagu dcc bank Private limited</label>
+            </value>
+            <value>
+                <fullName>LIC OF INDIA</fullName>
+                <default>false</default>
+                <label>LIC OF INDIA</label>
+            </value>
+            <value>
+                <fullName>MDCC Bank Limited</fullName>
+                <default>false</default>
+                <label>MDCC Bank Limited</label>
+            </value>
+            <value>
+                <fullName>Saraswat CO-OP Bank LTD</fullName>
+                <default>false</default>
+                <label>Saraswat CO-OP Bank LTD</label>
+            </value>
+            <value>
+                <fullName>Shriram Finance Limited</fullName>
+                <default>false</default>
+                <label>Shriram Finance Limited</label>
+            </value>
+            <value>
+                <fullName>Sri Vasavamba Co-operative Bank Ltd</fullName>
+                <default>false</default>
+                <label>Sri Vasavamba Co-operative Bank Ltd</label>
+            </value>
+            <value>
+                <fullName>SRI HINGULAMBIKA CREDIT CO-OPERATIVE SOCIETY LTD</fullName>
+                <default>false</default>
+                <label>SRI HINGULAMBIKA CREDIT CO-OPERATIVE SOCIETY LTD</label>
+            </value>
+            <value>
+                <fullName>THE S.S.K. COOPERATIVE BANK LTD</fullName>
+                <default>false</default>
+                <label>THE S.S.K. COOPERATIVE BANK LTD</label>
+            </value>
+            <value>
+                <fullName>The Federal Bank LTD</fullName>
+                <default>false</default>
+                <label>The Federal Bank LTD</label>
+            </value>
+            <value>
+                <fullName>The Kerala High Court Employees Credit CO-OP Society</fullName>
+                <default>false</default>
+                <label>The Kerala High Court Employees Credit CO-OP Society</label>
+            </value>
+            <value>
+                <fullName>The Mysore Merchants Co-operative Bank Ltd.</fullName>
+                <default>false</default>
+                <label>The Mysore Merchants Co-operative Bank Ltd.</label>
+            </value>
+            <value>
+                <fullName>CANARA BANK LTD</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>CANARA BANK LTD</label>
+            </value>
+            <value>
+                <fullName>Ernakulam District Police Credit Co-Op Society Ltd</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Ernakulam District Police Credit Co-Op Society Ltd</label>
+            </value>
+            <value>
+                <fullName>J ANIL KUMAR BOTHRA,13, VAIKUNDA VATHIYAR STREET, SOWCARPET,CHENNAI-600079.</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>J ANIL KUMAR BOTHRA,13, VAIKUNDA VATHIYAR STREET, SOWCARPET,CHENNAI-600079.</label>
+            </value>
+            <value>
+                <fullName>KARUR VYSYA BANK</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>KARUR VYSYA BANK</label>
+            </value>
+            <value>
+                <fullName>RKBA FINANCIER</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>RKBA FINANCIER</label>
+            </value>
+            <value>
+                <fullName>UNIAN BANK OF INDIA</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>UNIAN BANK OF INDIA</label>
+            </value>
+            <value>
+                <fullName>UNION BANK OF INDIA, WEST TAMBARAM BRANCH</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>UNION BANK OF INDIA, WEST TAMBARAM BRANCH</label>
+            </value>
+            <value>
+                <fullName>Union Bank</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Union Bank</label>
+            </value>
+            <value>
+                <fullName>Union Bank Of India</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Union Bank Of India</label>
+            </value>
+            <value>
+                <fullName>WheelsEMI Private Limited</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>WheelsEMI Private Limited</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

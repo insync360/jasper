@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Store_Name__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(
+    TEXT(Account.Type) = &quot;Dealer&quot; ||
+    TEXT(Account.Type) = &quot;COCO Store&quot;,
+    Account.Store_Name__c,
+    &quot;&quot;
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Store Name</label>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

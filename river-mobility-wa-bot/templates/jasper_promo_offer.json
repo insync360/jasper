@@ -1,0 +1,21 @@
+{
+  "name": "jasper_promo_offer",
+  "language": "en",
+  "category": "MARKETING",
+  "components": [
+    { "type": "HEADER", "format": "TEXT", "text": "Special Offer from Jasper Industries" },
+    {
+      "type": "BODY",
+      "text": "Hi {{1}}! 🚛 This month Jasper Industries brings you special prices and easy EMI options across the entire Tata commercial vehicle range — from the Ace mini-truck (₹3.2L) to heavy-duty tippers and buses. Reply here to grab the best deal for your business!",
+      "example": { "body_text": [["Ravi"]] }
+    },
+    { "type": "FOOTER", "text": "Jasper Industries · Authorized Tata Dealer since 1955" },
+    {
+      "type": "BUTTONS",
+      "buttons": [
+        { "type": "QUICK_REPLY", "text": "Know More" },
+        { "type": "QUICK_REPLY", "text": "Book a Test Drive" }
+      ]
+    }
+  ]
+}

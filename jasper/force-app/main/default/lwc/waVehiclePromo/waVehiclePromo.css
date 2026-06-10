@@ -1,0 +1,13 @@
+.reclist {
+    max-height: 340px;
+    overflow-y: auto;
+    border: 1px solid #e5e5e5;
+    border-radius: 6px;
+    padding: 4px 10px;
+}
+.recrow {
+    border-bottom: 1px solid #f3f3f3;
+}
+.recrow:last-child {
+    border-bottom: none;
+}

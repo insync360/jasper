@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Before_Completed_Service_Appointment</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+    NOT(ISBLANK(Service_Appointment__c)),     
+    TEXT(  Service_Appointment__r.Status  ) = &apos;Completed&apos;
+)</errorConditionFormula>
+    <errorDisplayField>Service_Appointment__c</errorDisplayField>
+    <errorMessage>Associated Service Appointment is already Completed.</errorMessage>
+</ValidationRule>

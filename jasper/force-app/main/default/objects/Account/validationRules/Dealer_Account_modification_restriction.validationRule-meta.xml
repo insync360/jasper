@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Dealer_Account_modification_restriction</fullName>
+    <active>false</active>
+    <errorConditionFormula>AND(
+    NOT(ISNEW()),
+    NOT(ISPICKVAL(Type, &quot;Customer&quot;)),
+    $Profile.Name &lt;&gt; &quot;System Administrator&quot;
+)</errorConditionFormula>
+    <errorMessage>You are not allowed to modify non - customer Accounts</errorMessage>
+</ValidationRule>

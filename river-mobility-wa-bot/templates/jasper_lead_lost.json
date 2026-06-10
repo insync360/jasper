@@ -1,0 +1,13 @@
+{
+  "name": "jasper_lead_lost",
+  "language": "en",
+  "category": "MARKETING",
+  "components": [
+    {
+      "type": "BODY",
+      "text": "Hi {{1}}, we're sorry we couldn't take things forward this time. You mentioned: {{2}}. We'd genuinely love another chance to help — just reply here and our team will do its best to make it right.",
+      "example": { "body_text": [["Ravi", "price was high"]] }
+    },
+    { "type": "FOOTER", "text": "Jasper Industries" }
+  ]
+}

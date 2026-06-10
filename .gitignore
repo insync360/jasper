@@ -1,0 +1,14 @@
+# Secrets / environment
+.env
+*.env
+!*.env.example
+
+# Dependencies
+node_modules/
+
+# Preserved nested git histories (not pushed)
+**/.git_disabled/
+
+# OS / editor
+.DS_Store
+Thumbs.db

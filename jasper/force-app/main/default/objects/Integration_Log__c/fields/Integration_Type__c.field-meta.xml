@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Integration_Type__c</fullName>
+    <label>Integration Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Lead Creation</fullName>
+                <default>false</default>
+                <label>Lead Creation</label>
+            </value>
+            <value>
+                <fullName>Account Registration</fullName>
+                <default>false</default>
+                <label>Account Registration</label>
+            </value>
+            <value>
+                <fullName>Order Creation</fullName>
+                <default>false</default>
+                <label>Order Creation</label>
+            </value>
+            <value>
+                <fullName>Order Update</fullName>
+                <default>false</default>
+                <label>Order Update</label>
+            </value>
+            <value>
+                <fullName>Payment Creation</fullName>
+                <default>false</default>
+                <label>Payment Creation</label>
+            </value>
+            <value>
+                <fullName>Payment Update</fullName>
+                <default>false</default>
+                <label>Payment Update</label>
+            </value>
+            <value>
+                <fullName>VIN Verification</fullName>
+                <default>false</default>
+                <label>VIN Verification</label>
+            </value>
+            <value>
+                <fullName>Service Appointment creation</fullName>
+                <default>false</default>
+                <label>Service Appointment creation</label>
+            </value>
+            <value>
+                <fullName>Case creation</fullName>
+                <default>false</default>
+                <label>Case creation</label>
+            </value>
+            <value>
+                <fullName>Service Milestone Notification</fullName>
+                <default>false</default>
+                <label>Service Milestone Notification</label>
+            </value>
+            <value>
+                <fullName>Lead Creation - BikeDekho</fullName>
+                <default>false</default>
+                <label>Lead Creation - BikeDekho</label>
+            </value>
+            <value>
+                <fullName>Lead Creation - 91Wheels</fullName>
+                <default>false</default>
+                <label>Lead Creation - 91Wheels</label>
+            </value>
+            <value>
+                <fullName>Lead creation - BikeWale</fullName>
+                <default>false</default>
+                <label>Lead creation - BikeWale</label>
+            </value>
+            <value>
+                <fullName>SAP</fullName>
+                <default>false</default>
+                <label>SAP</label>
+            </value>
+            <value>
+                <fullName>Extended Warranty</fullName>
+                <default>false</default>
+                <label>Extended Warranty</label>
+            </value>
+            <value>
+                <fullName>Lead Creation - ThinkResult</fullName>
+                <default>false</default>
+                <label>Lead Creation - ThinkResult</label>
+            </value>
+            <value>
+                <fullName>RSA</fullName>
+                <default>false</default>
+                <label>RSA</label>
+            </value>
+            <value>
+                <fullName>Reverse Integration Create Order</fullName>
+                <default>false</default>
+                <label>Reverse Integration Create Order</label>
+            </value>
+            <value>
+                <fullName>Reverse Integration Update Order</fullName>
+                <default>false</default>
+                <label>Reverse Integration Update Order</label>
+            </value>
+            <value>
+                <fullName>Reverse Integration Create Order Product</fullName>
+                <default>false</default>
+                <label>Reverse Integration Create Order Product</label>
+            </value>
+            <value>
+                <fullName>Reverse Integration Delete Order Product</fullName>
+                <default>false</default>
+                <label>Reverse Integration Delete Order Product</label>
+            </value>
+            <value>
+                <fullName>Reverse Integration Create Payment</fullName>
+                <default>false</default>
+                <label>Reverse Integration Create Payment</label>
+            </value>
+            <value>
+                <fullName>Reverse Integration Delete Order Payment</fullName>
+                <default>false</default>
+                <label>Reverse Integration Delete Order Payment</label>
+            </value>
+            <value>
+                <fullName>Reverse Integration Update User</fullName>
+                <default>false</default>
+                <label>Reverse Integration Update User</label>
+            </value>
+            <value>
+                <fullName>OTC Website</fullName>
+                <default>false</default>
+                <label>OTC Website</label>
+            </value>
+            <value>
+                <fullName>Lucep</fullName>
+                <default>false</default>
+                <label>Lucep</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

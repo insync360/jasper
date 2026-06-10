@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Prevent_Lead_Owner_Change_Partner</fullName>
+    <active>false</active>
+    <description>Partner Community users cannot change the owner of the lead records.</description>
+    <errorConditionFormula>AND(
+    ISCHANGED( OwnerId ),
+    ISPICKVAL( $Profile.UserType, &quot;PowerPartner&quot;)
+)</errorConditionFormula>
+    <errorDisplayField>OwnerId</errorDisplayField>
+    <errorMessage>Partner Community users cannot change the lead owner.</errorMessage>
+</ValidationRule>

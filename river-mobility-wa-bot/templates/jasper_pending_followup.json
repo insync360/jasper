@@ -1,0 +1,13 @@
+{
+  "name": "jasper_pending_followup",
+  "language": "en",
+  "category": "MARKETING",
+  "components": [
+    {
+      "type": "BODY",
+      "text": "Hi {{1}}, thank you for your time with Jasper Industries! There are a few pending steps on your enquiry — our team will contact you shortly to take it forward. If you need anything in the meantime, just reply here.",
+      "example": { "body_text": [["Ravi"]] }
+    },
+    { "type": "FOOTER", "text": "Jasper Industries" }
+  ]
+}

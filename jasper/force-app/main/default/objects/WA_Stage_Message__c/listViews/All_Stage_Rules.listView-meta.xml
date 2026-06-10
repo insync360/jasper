@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_Stage_Rules</fullName>
+    <columns>NAME</columns>
+    <columns>Object__c</columns>
+    <columns>Status_Value__c</columns>
+    <columns>Template_Name__c</columns>
+    <columns>Active__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All Stage Rules</label>
+</ListView>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Problem_Recurred_Again__c</fullName>
+    <inlineHelpText>Has the problem recurred again?</inlineHelpText>
+    <label>Has The Problem Recurred Again</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>TextArea</type>
+</CustomField>

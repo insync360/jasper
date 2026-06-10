@@ -1,0 +1,21 @@
+{
+  "name": "river-mobility-wa-bot",
+  "version": "0.1.0",
+  "description": "River Mobility WhatsApp + AI backend (Meta Cloud API, Claude, Salesforce)",
+  "main": "src/index.js",
+  "type": "commonjs",
+  "engines": {
+    "node": "22.x"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.32.1",
+    "axios": "^1.7.9",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "jsforce": "^3.6.3"
+  }
+}

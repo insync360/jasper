@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Lead_lost_reason</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND( ISPICKVAL(Status , &apos;Close lost&apos;) , ISPICKVAL( Lost_Reason__c , &apos;&apos;))</errorConditionFormula>
+    <errorMessage>Lead Lost Reason cannot be empty</errorMessage>
+</ValidationRule>

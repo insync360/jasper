@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Offer_Amount_Can_Be_Edited_Till_Invoice</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+    NOT(ISPICKVAL(Status, &quot;Draft&quot;)), 
+    NOT(ISPICKVAL(Status, &quot;Activated&quot;)),
+    NOT(ISPICKVAL(Status, &quot;Processing&quot;)), 
+    NOT(ISPICKVAL(Status, &quot;Payment Pending&quot;)),
+    NOT(ISPICKVAL(Status, &quot;Allotment in Process&quot;)),
+    NOT(ISPICKVAL(Status, &quot;Pre Invoice&quot;)),
+    ISCHANGED(Offers_Amount__c)
+)</errorConditionFormula>
+    <errorDisplayField>Offers_Amount__c</errorDisplayField>
+    <errorMessage>Offer Amount Cannot Be Changed After Invoice Generation</errorMessage>
+</ValidationRule>

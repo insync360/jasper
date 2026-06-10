@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_Vehicle_Amount__c</fullName>
+    <formula>IF(
+ISBLANK( Total_Vehicle_RollUp__c ) || Total_Vehicle_RollUp__c = 0.00,
+0,
+Total_Vehicle_RollUp__c - BLANKVALUE(State_Govt_Subsidy__c, 0) - BLANKVALUE(Subsidy_Amount__c, 0) - BLANKVALUE(Offers_Amount__c, 0) - BLANKVALUE(Discount_on_Ex_Showroom_Price__c, 0)
+)</formula>
+    <label>Total Vehicle Amount</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <type>Currency</type>
+</CustomField>

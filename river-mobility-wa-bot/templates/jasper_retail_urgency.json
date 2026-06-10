@@ -1,0 +1,13 @@
+{
+  "name": "jasper_retail_urgency",
+  "language": "en",
+  "category": "UTILITY",
+  "components": [
+    {
+      "type": "BODY",
+      "text": "Hi {{1}}, great news — your {{2}} (Order {{3}}) is allocated and reserved for you! ⏳ To make sure it stays yours, please complete the final formalities (payment & documents) at the earliest. Reply here and our team will help you wrap it up quickly. 🚗",
+      "example": { "body_text": [["Ravi", "Tata Harrier", "00109739"]] }
+    },
+    { "type": "FOOTER", "text": "Jasper Industries" }
+  ]
+}

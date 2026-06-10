@@ -1,0 +1,13 @@
+{
+  "name": "jasper_booking_confirmed",
+  "language": "en",
+  "category": "UTILITY",
+  "components": [
+    {
+      "type": "BODY",
+      "text": "Hi {{1}}, thank you for booking the {{2}} with Jasper Industries! 🚛 Your booking {{3}} is confirmed for {{4}}. Our team will keep you updated on allocation and delivery. For any help, just reply here.",
+      "example": { "body_text": [["Ravi", "M&HCV Construck (Tippers)", "00109739", "₹8,94,000"]] }
+    },
+    { "type": "FOOTER", "text": "Jasper Industries" }
+  ]
+}

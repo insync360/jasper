@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Allocation_Date__c</fullName>
+    <label>Allocation Date</label>
+    <type>Date</type>
+    <required>false</required>
+    <description>Date a vehicle was first allocated to this order (Assigned_Vehicle__c set). Drives 5-day retail-urgency nudges.</description>
+</CustomField>

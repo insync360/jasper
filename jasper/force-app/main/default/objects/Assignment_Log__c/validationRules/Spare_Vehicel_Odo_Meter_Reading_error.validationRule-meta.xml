@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Spare_Vehicel_Odo_Meter_Reading_error</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+    NOT(ISBLANK(Spare_Vehicle_Returning_Time__c)),
+    ISBLANK(Spare_Vehicle_Odo_Readings__c)
+)</errorConditionFormula>
+    <errorDisplayField>Spare_Vehicle_Odo_Readings__c</errorDisplayField>
+    <errorMessage>If the Spare Vehicle Returning Time is selected, please fill in the Spare Vehicle Odo Reading.</errorMessage>
+</ValidationRule>

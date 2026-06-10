@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Today_s_Integration_Logs</fullName>
+    <columns>NAME</columns>
+    <columns>Error_Message_del__c</columns>
+    <columns>Integration_Type__c</columns>
+    <columns>Status__c</columns>
+    <columns>CREATEDBY_USER</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Order__c</columns>
+    <columns>Response_Payload__c</columns>
+    <columns>Error_Messages__c</columns>
+    <columns>Request_Payload__c</columns>
+    <columns>Source__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Order__c</field>
+        <operation>contains</operation>
+        <value>00061087</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>Failed</value>
+    </filters>
+    <label>Today&apos;s Integration Logs</label>
+</ListView>

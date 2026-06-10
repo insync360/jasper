@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Designation__c</fullName>
+    <label>Designation</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>WM</fullName>
+                <default>false</default>
+                <label>WM</label>
+            </value>
+            <value>
+                <fullName>ASM</fullName>
+                <default>false</default>
+                <label>ASM</label>
+            </value>
+            <value>
+                <fullName>CRE</fullName>
+                <default>false</default>
+                <label>CRE</label>
+            </value>
+            <value>
+                <fullName>CRM</fullName>
+                <default>false</default>
+                <label>CRM</label>
+            </value>
+            <value>
+                <fullName>GM</fullName>
+                <default>false</default>
+                <label>GM</label>
+            </value>
+            <value>
+                <fullName>Parts</fullName>
+                <default>false</default>
+                <label>Parts</label>
+            </value>
+            <value>
+                <fullName>PDI</fullName>
+                <default>false</default>
+                <label>PDI</label>
+            </value>
+            <value>
+                <fullName>RSM</fullName>
+                <default>false</default>
+                <label>RSM</label>
+            </value>
+            <value>
+                <fullName>SA</fullName>
+                <default>false</default>
+                <label>SA</label>
+            </value>
+            <value>
+                <fullName>Service Center</fullName>
+                <default>false</default>
+                <label>Service Center</label>
+            </value>
+            <value>
+                <fullName>SP</fullName>
+                <default>false</default>
+                <label>SP</label>
+            </value>
+            <value>
+                <fullName>Spares</fullName>
+                <default>false</default>
+                <label>Spares</label>
+            </value>
+            <value>
+                <fullName>Spares Manager</fullName>
+                <default>false</default>
+                <label>Spares Manager</label>
+            </value>
+            <value>
+                <fullName>Technical Manager</fullName>
+                <default>false</default>
+                <label>Technical Manager</label>
+            </value>
+            <value>
+                <fullName>Technical Support</fullName>
+                <default>false</default>
+                <label>Technical Support</label>
+            </value>
+            <value>
+                <fullName>Technical Trainer</fullName>
+                <default>false</default>
+                <label>Technical Trainer</label>
+            </value>
+            <value>
+                <fullName>PS</fullName>
+                <default>false</default>
+                <label>PS</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

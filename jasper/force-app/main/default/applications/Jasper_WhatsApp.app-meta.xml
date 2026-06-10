@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>true</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
+    <isOmniPinnedViewEnabled>false</isOmniPinnedViewEnabled>
+    <label>Jasper WhatsApp</label>
+    <navType>Standard</navType>
+    <tabs>WA_Template_Builder</tabs>
+    <tabs>WA_Stage_Message__c</tabs>
+    <tabs>WA_Enquiry_Campaign</tabs>
+    <tabs>WA_Booking_Campaign</tabs>
+    <tabs>WA_Delivery_Campaign</tabs>
+    <tabs>WA_Lost_Case_Analysis</tabs>
+    <tabs>WA_Vehicle_Promos</tabs>
+    <tabs>WA_Lead_Segregation</tabs>
+    <tabs>WA_Payment_Reminders</tabs>
+    <tabs>standard-Task</tabs>
+    <uiType>Lightning</uiType>
+</CustomApplication>

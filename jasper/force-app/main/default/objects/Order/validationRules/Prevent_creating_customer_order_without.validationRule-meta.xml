@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Prevent_creating_customer_order_without</fullName>
+    <active>false</active>
+    <errorConditionFormula>RecordTypeId = &apos;012J4000001108b&apos; &amp;&amp;  ISBLANK( City__c )</errorConditionFormula>
+    <errorDisplayField>City__c</errorDisplayField>
+    <errorMessage>City field shouldn&apos;t be blank</errorMessage>
+</ValidationRule>

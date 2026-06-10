@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Soruce_should_not_be_blank</fullName>
+    <active>true</active>
+    <description>Soruce if any other shouldn&apos;t be blank</description>
+    <errorConditionFormula>Primary_Source__c = &apos;Activities&apos; &amp;&amp;  ISBLANK( Source_if_any_other__c )</errorConditionFormula>
+    <errorDisplayField>Source_if_any_other__c</errorDisplayField>
+    <errorMessage>Please fill the Source ,if any other</errorMessage>
+</ValidationRule>

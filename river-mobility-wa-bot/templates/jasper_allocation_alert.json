@@ -1,0 +1,13 @@
+{
+  "name": "jasper_allocation_alert",
+  "language": "en",
+  "category": "UTILITY",
+  "components": [
+    {
+      "type": "BODY",
+      "text": "🎉 Great news, {{1}}! Your {{2}} (Order {{3}}) has been allocated. Estimated delivery: {{4}}. Our team will now guide you through the final steps — payment and delivery. Reply here for any help.",
+      "example": { "body_text": [["Ravi", "Tata Harrier", "00109739", "20 Jun 2026"]] }
+    },
+    { "type": "FOOTER", "text": "Jasper Industries" }
+  ]
+}

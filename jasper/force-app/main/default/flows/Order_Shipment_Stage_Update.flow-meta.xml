@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>62.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Delivered_Assignment</name>
+        <label>Delivered Assignment</label>
+        <locationX>1612</locationX>
+        <locationY>863</locationY>
+        <assignmentItems>
+            <assignToReference>Shipment_Deliverd</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <numberValue>1.0</numberValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Iteration</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Non_Delivered_Assignment</name>
+        <label>Non Delivered Assignment</label>
+        <locationX>1876</locationX>
+        <locationY>863</locationY>
+        <assignmentItems>
+            <assignToReference>Shipment_Non_Delivered</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <numberValue>1.0</numberValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Iteration</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>check_for_dispatch_in_order</name>
+        <label>check for dispatch in order</label>
+        <locationX>776</locationX>
+        <locationY>539</locationY>
+        <defaultConnector>
+            <targetReference>Update_Records_2</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>dispatch_stage_of_order</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Record_id_of_Order.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Dispatch</stringValue>
+                </rightValue>
+            </conditions>
+            <label>dispatch stage of order</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>check_stage_of_order</name>
+        <label>check stage of order</label>
+        <locationX>248</locationX>
+        <locationY>647</locationY>
+        <defaultConnector>
+            <targetReference>Update_Records_1</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Outcome_1_of_Decision_4</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Record_id_of_Order.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Invoice Generation</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Outcome 1 of Decision 4</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_Variable</name>
+        <label>Check Variable</label>
+        <locationX>1524</locationX>
+        <locationY>1139</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Outcome_1_of_Check_Variable</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Shipment_Non_Delivered</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Order__r.Total_Outstanding_Quantity__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Records_3</targetReference>
+            </connector>
+            <label>Outcome 1 of Check Variable</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Copy_1_of_check_for_dispatch_in_order</name>
+        <label>Copy 1 of check for dispatch in order</label>
+        <locationX>2316</locationX>
+        <locationY>647</locationY>
+        <defaultConnector>
+            <targetReference>Update_Records_4</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>preparing_for_dispatch_stage_of_order</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Record_id_of_Order.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Preparing Dispatch</stringValue>
+                </rightValue>
+            </conditions>
+            <label>preparing for dispatch stage of order</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Decision_2</name>
+        <label>Decision 2</label>
+        <locationX>1744</locationX>
+        <locationY>755</locationY>
+        <defaultConnector>
+            <targetReference>Non_Delivered_Assignment</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Delivered_status</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Iteration.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Delivered</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Delivered_Assignment</targetReference>
+            </connector>
+            <label>Delivered status</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Equal_to_Dispatch</name>
+        <label>Equal to Dispatch</label>
+        <locationX>2118</locationX>
+        <locationY>539</locationY>
+        <defaultConnector>
+            <targetReference>Copy_1_of_check_for_dispatch_in_order</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Dispatch_status</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Record_id_of_Order.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Dispatch</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Dispatch status</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Equal_to_dispatch_and_prepairing_dispatch</name>
+        <label>Equal to dispatch and prepairing dispatch</label>
+        <locationX>50</locationX>
+        <locationY>539</locationY>
+        <defaultConnector>
+            <targetReference>check_stage_of_order</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Equal_to_dispatch_and_prepairing_dispatch1</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>Record_id_of_Order.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Dispatch</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Record_id_of_Order.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Preparing Dispatch</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Equal to dispatch and prepairing dispatch</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Status_of_Shipment</name>
+        <label>Status of Shipment</label>
+        <locationX>1381</locationX>
+        <locationY>431</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Invoice_Generation</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Invoice Generation</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Equal_to_dispatch_and_prepairing_dispatch</targetReference>
+            </connector>
+            <label>Invoice Generation</label>
+        </rules>
+        <rules>
+            <name>Dispatched</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Dispatched</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>check_for_dispatch_in_order</targetReference>
+            </connector>
+            <label>Dispatched</label>
+        </rules>
+        <rules>
+            <name>Delivered</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Delivered</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>All_Shipments</targetReference>
+            </connector>
+            <label>Delivered</label>
+        </rules>
+        <rules>
+            <name>status_of_Prepairing_to_dispatch</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Preparing for Dispatch</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Equal_to_Dispatch</targetReference>
+            </connector>
+            <label>status of Prepairing to dispatch</label>
+        </rules>
+    </decisions>
+    <description>Added a outstanding quantity logic if it is zero then order status goes to deliverd</description>
+    <environments>Default</environments>
+    <interviewLabel>Order Shipment Stage Update {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Order Shipment Stage Update</label>
+    <loops>
+        <name>Iteration</name>
+        <label>Iteration</label>
+        <locationX>1524</locationX>
+        <locationY>647</locationY>
+        <collectionReference>All_Shipments</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Decision_2</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Check_Variable</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>All_Shipments</name>
+        <label>All Shipments</label>
+        <locationX>1524</locationX>
+        <locationY>539</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Iteration</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Order__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Order__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Shipment</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Record_id_of_Order</name>
+        <label>Record id of Order</label>
+        <locationX>1381</locationX>
+        <locationY>323</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Status_of_Shipment</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Order__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Order</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_Records_1</name>
+        <label>Update Records 1</label>
+        <locationX>380</locationX>
+        <locationY>755</locationY>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Invoice Generation</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.Order__r</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Records_2</name>
+        <label>Update Records 2</label>
+        <locationX>908</locationX>
+        <locationY>647</locationY>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Dispatch</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.Order__r</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Records_3</name>
+        <label>Update Records 3</label>
+        <locationX>1392</locationX>
+        <locationY>1247</locationY>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Delivered</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.Order__r</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Records_4</name>
+        <label>Update Records 4</label>
+        <locationX>2448</locationX>
+        <locationY>755</locationY>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Preparing Dispatch</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.Order__r</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>1255</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Record_id_of_Order</targetReference>
+        </connector>
+        <object>Shipment</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>Shipment</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Shipment</objectType>
+    </variables>
+    <variables>
+        <name>Shipment_Deliverd</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+        <value>
+            <numberValue>0.0</numberValue>
+        </value>
+    </variables>
+    <variables>
+        <name>Shipment_Non_Delivered</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+        <value>
+            <numberValue>0.0</numberValue>
+        </value>
+    </variables>
+</Flow>

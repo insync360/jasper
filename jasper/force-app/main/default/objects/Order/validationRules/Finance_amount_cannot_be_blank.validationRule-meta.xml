@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Finance_amount_cannot_be_blank</fullName>
+    <active>true</active>
+    <errorConditionFormula>OR(AND(NOT(ISPICKVAL( Finance_Name__c , &apos;&apos;) ),ISBLANK(Financed_Amount__c)),Financed_Amount__c == 0)</errorConditionFormula>
+    <errorMessage>Finance amount shouldn&apos;t be blank or Zero</errorMessage>
+</ValidationRule>

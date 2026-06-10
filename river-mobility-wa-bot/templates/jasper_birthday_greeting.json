@@ -1,0 +1,13 @@
+{
+  "name": "jasper_birthday_greeting",
+  "language": "en",
+  "category": "MARKETING",
+  "components": [
+    {
+      "type": "BODY",
+      "text": "🎂 Happy Birthday, {{1}}! 🎉\n\nEveryone at Jasper Industries wishes you a wonderful year ahead. To celebrate your special day, enjoy exclusive birthday offers on our Tata vehicles — just reply here and our team will share the details. 🚗🎁",
+      "example": { "body_text": [["Ganesh"]] }
+    },
+    { "type": "FOOTER", "text": "Jasper Industries" }
+  ]
+}

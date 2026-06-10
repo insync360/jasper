@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Employee_Id_Should_Not_Be_Null</fullName>
+    <active>true</active>
+    <description>Employee Id Should not be null when Employee Discount is Added</description>
+    <errorConditionFormula>AND(
+    NOT(ISBLANK(Offers_Amount__c)), 
+    Offers_Amount__c &gt;= 20000,
+    ISBLANK(Employee_Id__c),
+    $Profile.Name &lt;&gt; &quot;System Administrator&quot;
+)</errorConditionFormula>
+    <errorDisplayField>Employee_Id__c</errorDisplayField>
+    <errorMessage>Employee Id Is Mandatory</errorMessage>
+</ValidationRule>

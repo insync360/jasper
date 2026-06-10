@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Platinum__c</fullName>
+    <label>Platinum Stock</label>
+    <type>Checkbox</type>
+    <defaultValue>false</defaultValue>
+    <description>Mark this vehicle as platinum/premium stock to spotlight to prospects.</description>
+</CustomField>

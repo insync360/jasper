@@ -1,0 +1,13 @@
+{
+  "name": "jasper_price_alert",
+  "language": "en",
+  "category": "MARKETING",
+  "components": [
+    {
+      "type": "BODY",
+      "text": "Hi {{1}}! 🔔 Price update on the {{2}} — now available at {{3}}. This is a limited-period price at Jasper Industries. Reply here to get a detailed quote or book a test drive!",
+      "example": { "body_text": [["Ravi", "Tata Harrier", "₹15,49,000"]] }
+    },
+    { "type": "FOOTER", "text": "Jasper Industries" }
+  ]
+}

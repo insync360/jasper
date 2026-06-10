@@ -1,0 +1,76 @@
+<template>
+    <lightning-card title={title} icon-name="standard:campaign">
+        <div class="slds-p-horizontal_medium slds-p-bottom_medium">
+            <div class="slds-grid slds-gutters slds-wrap">
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning-combobox label="Approved Template" value={selectedTemplate}
+                        placeholder="Select a template" options={templateOptions}
+                        onchange={handleTemplateChange}></lightning-combobox>
+                </div>
+                <div class="slds-col slds-size_1-of-2">
+                    <template if:true={hasPreview}>
+                        <div class="wa-bubble">
+                            <template if:true={preview.imageUrl}>
+                                <img src={preview.imageUrl} class="wa-img" alt="header" />
+                            </template>
+                            <template if:true={preview.showMediaPlaceholder}>
+                                <div class="wa-header-media">{preview.mediaLabel}</div>
+                            </template>
+                            <template if:true={preview.headerText}>
+                                <p class="wa-header">{preview.headerText}</p>
+                            </template>
+                            <p class="wa-body">{preview.body}</p>
+                            <template if:true={preview.footer}>
+                                <p class="wa-footer">{preview.footer}</p>
+                            </template>
+                        </div>
+                        <template if:true={preview.hasButtons}>
+                            <div class="wa-buttons">
+                                <template for:each={preview.buttons} for:item="b">
+                                    <div key={b.key} class="wa-btn">{b.text}</div>
+                                </template>
+                            </div>
+                        </template>
+                    </template>
+                </div>
+            </div>
+
+            <div class="slds-grid slds-grid_align-spread slds-grid_vertical-align-end slds-m-top_medium slds-m-bottom_x-small slds-wrap">
+                <div class="slds-grid slds-grid_vertical-align-end slds-wrap">
+                    <div style="min-width:180px">
+                        <lightning-combobox label="Filter by Info" value={selectedInfo}
+                            options={infoOptions} onchange={handleInfoFilter}></lightning-combobox>
+                    </div>
+                    <div class="slds-m-left_small" style="min-width:220px">
+                        <lightning-input type="search" label="Search (name / phone / info)"
+                            value={searchTerm} onchange={handleSearch}></lightning-input>
+                    </div>
+                    <lightning-button class="slds-m-left_small" label="Select All" onclick={handleSelectAll}></lightning-button>
+                    <lightning-button class="slds-m-left_x-small" label="Clear" onclick={handleClearSelection}></lightning-button>
+                </div>
+                <div class="slds-grid slds-grid_vertical-align-end">
+                    <span class="slds-text-body_small slds-m-right_small">{recipientCount} shown · {selectedCount} selected</span>
+                    <lightning-button-icon icon-name="utility:refresh" onclick={loadRecipients}
+                        alternative-text="Reload recipients"></lightning-button-icon>
+                </div>
+            </div>
+
+            <template if:true={loading}>
+                <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+            </template>
+
+            <div style="height:320px">
+                <lightning-datatable key-field="id" data={recipients} columns={columns}
+                    selected-rows={selectedRowIds} onrowselection={handleRowSelection}></lightning-datatable>
+            </div>
+
+            <div class="slds-m-top_medium">
+                <lightning-button variant="brand" label={sendLabel} onclick={handleSend}
+                    disabled={sendDisabled}></lightning-button>
+                <template if:true={sending}>
+                    <lightning-spinner alternative-text="Sending" size="small"></lightning-spinner>
+                </template>
+            </div>
+        </div>
+    </lightning-card>
+</template>

@@ -1,0 +1,13 @@
+{
+  "name": "jasper_payment_alert",
+  "language": "en",
+  "category": "UTILITY",
+  "components": [
+    {
+      "type": "BODY",
+      "text": "Hi {{1}}, a payment of {{2}} is pending for your {{3}} (Order {{4}}) before delivery. Please complete it at the earliest so we can proceed with your delivery. Reply here for payment assistance.",
+      "example": { "body_text": [["Ravi", "₹2,50,000", "Tata Harrier", "00109739"]] }
+    },
+    { "type": "FOOTER", "text": "Jasper Industries" }
+  ]
+}

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Lead_lost_reason_emplty</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(ISPICKVAL( Lost_Reason__c , &apos;Others - need reason&apos;),  ISBLANK( Lost_reason_if_any__c ))</errorConditionFormula>
+    <errorMessage>Please enter Lost reason if any</errorMessage>
+</ValidationRule>

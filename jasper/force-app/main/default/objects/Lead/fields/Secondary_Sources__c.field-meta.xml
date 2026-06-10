@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Secondary_Sources__c</fullName>
+    <label>Lead Secondary Source</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>LeadSource</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Google</fullName>
+                <default>false</default>
+                <label>Web – Google</label>
+            </value>
+            <value>
+                <fullName>Meta</fullName>
+                <default>false</default>
+                <label>Web – Meta</label>
+            </value>
+            <value>
+                <fullName>WhatsApp</fullName>
+                <default>false</default>
+                <label>WhatsApp</label>
+            </value>
+            <value>
+                <fullName>River Website</fullName>
+                <default>false</default>
+                <label>Organic - Web</label>
+            </value>
+            <value>
+                <fullName>91 wheels</fullName>
+                <default>false</default>
+                <label>91 wheels</label>
+            </value>
+            <value>
+                <fullName>Bikewale</fullName>
+                <default>false</default>
+                <label>Bikewale</label>
+            </value>
+            <value>
+                <fullName>Bikedekho</fullName>
+                <default>false</default>
+                <label>Bikedekho</label>
+            </value>
+            <value>
+                <fullName>Telephone</fullName>
+                <default>false</default>
+                <label>Telephone</label>
+            </value>
+            <value>
+                <fullName>Tech Park activities</fullName>
+                <default>false</default>
+                <label>Tech Park activities</label>
+            </value>
+            <value>
+                <fullName>Auto Expo</fullName>
+                <default>false</default>
+                <label>Auto Expo</label>
+            </value>
+            <value>
+                <fullName>Theater campaigns</fullName>
+                <default>false</default>
+                <label>Theater campaigns</label>
+            </value>
+            <value>
+                <fullName>College activities</fullName>
+                <default>false</default>
+                <label>College activities</label>
+            </value>
+            <value>
+                <fullName>Mall activities</fullName>
+                <default>false</default>
+                <label>Mall activities</label>
+            </value>
+            <value>
+                <fullName>Exchange Mela</fullName>
+                <default>false</default>
+                <label>Exchange Mela</label>
+            </value>
+            <value>
+                <fullName>RWA</fullName>
+                <default>false</default>
+                <label>RWA</label>
+            </value>
+            <value>
+                <fullName>Outdoor activations</fullName>
+                <default>false</default>
+                <label>Outdoor activations</label>
+            </value>
+            <value>
+                <fullName>Others</fullName>
+                <default>false</default>
+                <label>Others</label>
+            </value>
+            <value>
+                <fullName>ThinkResult</fullName>
+                <default>false</default>
+                <label>ThinkResult</label>
+            </value>
+            <value>
+                <fullName>CarBike360</fullName>
+                <default>false</default>
+                <label>CarBike360</label>
+            </value>
+            <value>
+                <fullName>HT Auto</fullName>
+                <default>false</default>
+                <label>HT Auto</label>
+            </value>
+            <value>
+                <fullName>OzoneTel</fullName>
+                <default>false</default>
+                <label>OzoneTel</label>
+            </value>
+            <value>
+                <fullName>Online</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Online</label>
+            </value>
+            <value>
+                <fullName>Outdoor activity</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Outdoor activity</label>
+            </value>
+            <value>
+                <fullName>OzoneTel WhatsApp</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>OzoneTel WhatsApp</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Telephone</controllingFieldValue>
+            <valueName>Telephone</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Discount_must_less_than_price_of_Parts</fullName>
+    <active>false</active>
+    <errorConditionFormula>Accessories_Discount_Amount__c  &gt;   ( TotalAmount + Total_Accessories_GST__c)</errorConditionFormula>
+    <errorDisplayField>Accessories_Discount_Amount__c</errorDisplayField>
+    <errorMessage>Discount amount must be less than the total price of the parts/accessories</errorMessage>
+</ValidationRule>

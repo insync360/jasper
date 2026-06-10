@@ -1,0 +1,13 @@
+{
+  "name": "jasper_opportunity_greeting",
+  "language": "en",
+  "category": "MARKETING",
+  "components": [
+    {
+      "type": "BODY",
+      "text": "Hi {{1}}, thank you for showing interest in booking with Jasper Industries! 🎉 Our team will now guide you through the next steps — confirming your variant & colour, finance/EMI options, and the booking amount. We'll reach out shortly to help you complete it.",
+      "example": { "body_text": [["Ravi"]] }
+    },
+    { "type": "FOOTER", "text": "Jasper Industries" }
+  ]
+}

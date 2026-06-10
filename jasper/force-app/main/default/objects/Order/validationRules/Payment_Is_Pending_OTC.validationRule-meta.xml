@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Payment_Is_Pending_OTC</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+    NOT(ISPICKVAL(Payment_Status__c, &apos;Completed&apos;)),
+    ISPICKVAL(Status, &apos;Completed&apos;),
+    $RecordType.DeveloperName = &apos;OTC&apos;
+)</errorConditionFormula>
+    <errorMessage>Payment is Pending</errorMessage>
+</ValidationRule>

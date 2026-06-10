@@ -1,0 +1,114 @@
+<template>
+    <lightning-card title="WhatsApp Template Builder" icon-name="standard:messaging_session">
+        <div class="slds-p-horizontal_medium slds-p-bottom_medium">
+            <lightning-input label="Template Name" data-field="name" value={form.name}
+                onchange={handleChange} placeholder="e.g. jasper_diwali_offer"
+                field-level-help="Lowercase letters, numbers and underscores only (auto-formatted).">
+            </lightning-input>
+
+            <div class="slds-grid slds-gutters slds-wrap">
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning-combobox label="Category" data-field="category" value={form.category}
+                        options={categoryOptions} onchange={handleChange}></lightning-combobox>
+                </div>
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning-input label="Language" data-field="language" value={form.language}
+                        onchange={handleChange}></lightning-input>
+                </div>
+            </div>
+
+            <lightning-combobox label="Header" data-field="headerType" value={form.headerType}
+                options={headerOptions} onchange={handleChange}></lightning-combobox>
+
+            <template if:true={isText}>
+                <lightning-input label="Header Text" data-field="headerText" value={form.headerText}
+                    onchange={handleChange}></lightning-input>
+            </template>
+
+            <template if:true={isImage}>
+                <label class="slds-form-element__label slds-m-top_small">Header Image</label>
+                <input type="file" accept="image/*" onchange={handleImage} />
+                <template if:true={imageName}>
+                    <p class="slds-text-body_small slds-m-top_xxx-small">Selected: {imageName}</p>
+                </template>
+            </template>
+
+            <lightning-textarea label="Body" data-field="bodyText" value={form.bodyText}
+                onchange={handleChange} placeholder="Hi {{1}}, ... use {{1}} for the variable"></lightning-textarea>
+
+            <lightning-input label="Body Variable Example (for {{1}})" data-field="bodyExample"
+                value={form.bodyExample} onchange={handleChange} placeholder="e.g. Ravi"></lightning-input>
+
+            <lightning-input label="Footer" data-field="footer" value={form.footer}
+                onchange={handleChange}></lightning-input>
+
+            <div class="slds-grid slds-gutters slds-wrap">
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning-input label="Button 1 (quick reply)" data-field="button1"
+                        value={form.button1} onchange={handleChange}></lightning-input>
+                </div>
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning-input label="Button 2 (quick reply)" data-field="button2"
+                        value={form.button2} onchange={handleChange}></lightning-input>
+                </div>
+            </div>
+
+            <div class="slds-m-top_medium">
+                <lightning-button variant="brand" label="Submit for Approval"
+                    onclick={handleSubmit} disabled={submitting}></lightning-button>
+                <template if:true={submitting}>
+                    <lightning-spinner alternative-text="Submitting" size="small"></lightning-spinner>
+                </template>
+            </div>
+        </div>
+
+        <div class="slds-p-horizontal_medium slds-p-bottom_medium">
+            <div class="slds-grid slds-grid_align-spread slds-m-bottom_x-small">
+                <h3 class="slds-text-heading_small">All Templates in this Account</h3>
+                <lightning-button-icon icon-name="utility:refresh" onclick={handleRefresh}
+                    alternative-text="Refresh"></lightning-button-icon>
+            </div>
+
+            <template if:true={loadingList}>
+                <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+            </template>
+
+            <!-- Header row -->
+            <div class="slds-grid slds-gutters wa-thead">
+                <div class="slds-col slds-size_5-of-12">Template</div>
+                <div class="slds-col slds-size_7-of-12">How it looks on WhatsApp</div>
+            </div>
+
+            <template for:each={rows} for:item="row">
+                <div key={row.id} class="slds-grid slds-gutters wa-row">
+                    <div class="slds-col slds-size_5-of-12">
+                        <p class="slds-text-body_regular wa-name">{row.name}</p>
+                        <lightning-badge label={row.category}></lightning-badge>
+                        <div class={row.statusClass}>{row.status}</div>
+                    </div>
+                    <div class="slds-col slds-size_7-of-12">
+                        <div class="wa-bubble">
+                            <template if:true={row.headerMedia}>
+                                <div class="wa-header-media">{row.mediaLabel}</div>
+                            </template>
+                            <template if:true={row.headerText}>
+                                <p class="wa-header">{row.headerText}</p>
+                            </template>
+                            <p class="wa-body">{row.body}</p>
+                            <template if:true={row.footer}>
+                                <p class="wa-footer">{row.footer}</p>
+                            </template>
+                        </div>
+                        <template if:true={row.hasButtons}>
+                            <div class="wa-buttons">
+                                <template for:each={row.buttons} for:item="b">
+                                    <div key={b.key} class="wa-btn">{b.text}</div>
+                                </template>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>

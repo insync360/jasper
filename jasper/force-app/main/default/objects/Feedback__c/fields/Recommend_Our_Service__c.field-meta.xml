@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Recommend_Our_Service__c</fullName>
+    <inlineHelpText>How likely are you to recommend our service to others?</inlineHelpText>
+    <label>Recommend Our Service</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Very Likely</fullName>
+                <default>false</default>
+                <label>Very Likely</label>
+            </value>
+            <value>
+                <fullName>Likely</fullName>
+                <default>false</default>
+                <label>Likely</label>
+            </value>
+            <value>
+                <fullName>Neutral</fullName>
+                <default>false</default>
+                <label>Neutral</label>
+            </value>
+            <value>
+                <fullName>Unlikely</fullName>
+                <default>false</default>
+                <label>Unlikely</label>
+            </value>
+            <value>
+                <fullName>Very Unlikely</fullName>
+                <default>false</default>
+                <label>Very Unlikely</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

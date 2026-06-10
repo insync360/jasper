@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Grand_Total__c</fullName>
+    <formula>IF(
+DATEVALUE(CreatedDate) &gt; DATE(2026, 01, 19),
+
+Total_Vehicle_RollUp__c
+- (State_Govt_Subsidy__c + Subsidy_Amount__c + Discount_on_Ex_Showroom_Price__c + Offers_Amount__c)
++ RTO_Charges__c
++ Insurance_Amount__c
++ Handling_Charges__c
++ Transportation_Charges__c
++ Total_Accessories_RollUp__c
++ Total_Merchandise_RollUp__c,
+
+Total_Vehicle_RollUp__c
+- (
+Offers_Amount__c
++ State_Govt_Subsidy__c
++ Discount_on_Ex_Showroom_Price__c
++ Subsidy_Amount__c
+)
++ RTO_Charges__c
++ Insurance_Amount__c
++ Handling_Charges__c
++ Transportation_Charges__c
++ (Total_Accessories_RollUp__c - Accessories_Discount_Amount__c)
++ (
+Total_Merchandise_RollUp__c
+- Merchandise_Additional_Discount__c
+)
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Grand Total</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <type>Currency</type>
+</CustomField>

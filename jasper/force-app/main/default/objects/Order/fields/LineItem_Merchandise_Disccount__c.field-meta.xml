@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LineItem_Merchandise_Disccount__c</fullName>
+    <label>LineItem Merchandise Disccount</label>
+    <summarizedField>OrderItem.Merchandise_Disccount_Amount__c</summarizedField>
+    <summaryFilterItems>
+        <field>OrderItem.Type__c</field>
+        <operation>equals</operation>
+        <value>Merchandise</value>
+    </summaryFilterItems>
+    <summaryForeignKey>OrderItem.OrderId</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <type>Summary</type>
+</CustomField>

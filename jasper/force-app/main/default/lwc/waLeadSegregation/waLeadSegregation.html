@@ -1,0 +1,83 @@
+<template>
+    <lightning-card title="AI Lead Segregation" icon-name="utility:filterList">
+        <div class="slds-p-horizontal_medium slds-p-bottom_medium">
+            <p class="slds-text-color_weak slds-p-bottom_small">
+                <b>Select</b> the enquiry customers you want to process, then <b>Segregate</b> — AI buckets each
+                into <b>Hot / Warm / Cold</b> from their responses (conversation) and signals. The segment is
+                saved on each lead (max 50 per run).
+            </p>
+
+            <div class="slds-grid slds-grid_align-spread slds-grid_vertical-align-center">
+                <h3 class="slds-text-heading_small">Customers (active enquiry leads)</h3>
+                <span class="slds-badge">{selectedCount} selected</span>
+            </div>
+
+            <lightning-input type="search" label="Search customers" variant="label-hidden"
+                placeholder="Search by name, phone, or status" onchange={handleSearch}
+                class="slds-m-vertical_x-small"></lightning-input>
+
+            <template if:true={loadingList}>
+                <lightning-spinner alternative-text="Loading..." size="small"></lightning-spinner>
+            </template>
+
+            <template if:false={loadingList}>
+                <div class="slds-box slds-box_x-small slds-m-bottom_small">
+                    <lightning-input type="checkbox" label="Select all (filtered)" checked={allFilteredSelected}
+                        onchange={handleSelectAll}></lightning-input>
+                </div>
+                <div class="reclist">
+                    <template for:each={filteredCandidates} for:item="c">
+                        <div key={c.key} class="slds-grid slds-grid_vertical-align-center slds-p-vertical_xx-small recrow">
+                            <lightning-input type="checkbox" data-id={c.id} checked={c.checked}
+                                onchange={handleToggle} variant="label-hidden"></lightning-input>
+                            <span class="slds-m-left_small slds-text-body_regular">{c.name}</span>
+                            <template if:true={c.segment}>
+                                <span class="slds-m-left_x-small existing">{c.segment}</span>
+                            </template>
+                            <span class="slds-m-left_small slds-text-body_small slds-text-color_weak">{c.phone} · {c.info}</span>
+                        </div>
+                    </template>
+                </div>
+            </template>
+
+            <div class="slds-m-top_medium">
+                <lightning-button variant="brand" label="Segregate selected" icon-name="utility:einstein"
+                    onclick={handleSegregate} disabled={sendDisabled}></lightning-button>
+                <template if:true={loading}>
+                    <lightning-spinner alternative-text="Segregating..." size="small"></lightning-spinner>
+                </template>
+            </div>
+
+            <template if:true={error}>
+                <div class="slds-box slds-theme_warning slds-m-top_medium">{error}</div>
+            </template>
+
+            <template if:true={done}>
+                <div class="slds-grid slds-gutters slds-m-top_medium slds-m-bottom_small">
+                    <div class="slds-col"><div class="tile hot"><span class="num">{hotCount}</span><span>Hot</span></div></div>
+                    <div class="slds-col"><div class="tile warm"><span class="num">{warmCount}</span><span>Warm</span></div></div>
+                    <div class="slds-col"><div class="tile cold"><span class="num">{coldCount}</span><span>Cold</span></div></div>
+                </div>
+
+                <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                    <thead>
+                        <tr class="slds-line-height_reset">
+                            <th><div class="slds-truncate">Customer</div></th>
+                            <th><div class="slds-truncate">Segment</div></th>
+                            <th><div class="slds-truncate">Why</div></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={rows} for:item="r">
+                            <tr key={r.id}>
+                                <td><div class="slds-truncate">{r.name}</div></td>
+                                <td><span class={r.badgeClass}>{r.segment}</span></td>
+                                <td><div class="slds-truncate" title={r.detail}>{r.detail}</div></td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </template>
+        </div>
+    </lightning-card>
+</template>

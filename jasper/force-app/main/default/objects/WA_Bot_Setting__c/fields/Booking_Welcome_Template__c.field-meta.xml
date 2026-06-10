@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Booking_Welcome_Template__c</fullName>
+    <label>Booking Welcome Template</label>
+    <type>Text</type>
+    <length>80</length>
+    <description>Approved template name sent automatically when a booking (Order) is created.</description>
+</CustomField>

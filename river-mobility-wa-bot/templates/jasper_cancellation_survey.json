@@ -1,0 +1,21 @@
+{
+  "name": "jasper_cancellation_survey",
+  "language": "en",
+  "category": "UTILITY",
+  "components": [
+    {
+      "type": "BODY",
+      "text": "Hi {{1}}, we noticed your booking for {{2}} (Order {{3}}) has been cancelled. We're sorry to see this, and we'd love to understand why — your feedback genuinely helps us do better. Could you share the main reason?",
+      "example": { "body_text": [["Ravi", "Tata Harrier", "00109739"]] }
+    },
+    { "type": "FOOTER", "text": "Jasper Industries" },
+    {
+      "type": "BUTTONS",
+      "buttons": [
+        { "type": "QUICK_REPLY", "text": "Price / Budget" },
+        { "type": "QUICK_REPLY", "text": "Chose another" },
+        { "type": "QUICK_REPLY", "text": "Other reason" }
+      ]
+    }
+  ]
+}

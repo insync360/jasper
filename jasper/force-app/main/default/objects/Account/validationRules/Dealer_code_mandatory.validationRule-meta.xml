@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Dealer_code_mandatory</fullName>
+    <active>false</active>
+    <errorConditionFormula>ISBLANK( Center_Code__c ) &amp;&amp;
+(
+  ISPICKVAL( Type , &quot;Dealer&quot;) ||
+  ISPICKVAL( Type , &quot;Service Center&quot;)
+)</errorConditionFormula>
+    <errorDisplayField>Center_Code__c</errorDisplayField>
+    <errorMessage>The Dealer code is mandatory</errorMessage>
+</ValidationRule>

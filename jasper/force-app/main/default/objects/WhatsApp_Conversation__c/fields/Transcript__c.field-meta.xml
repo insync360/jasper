@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Transcript__c</fullName>
+    <label>Transcript</label>
+    <type>LongTextArea</type>
+    <length>131072</length>
+    <visibleLines>25</visibleLines>
+    <description>Full conversation transcript (all inbound/outbound messages).</description>
+</CustomField>

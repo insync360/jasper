@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RTO_Validation_for_Cancellation</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+    ISCHANGED(Status),
+    ISPICKVAL(Status, &quot;Cancellation Requested&quot;),
+    AND(
+        PRIORVALUE(Status) &lt;&gt; &quot;RTO Registration&quot;,
+        ISBLANK(Reason_for_Cancellation__c)
+    )
+)</errorConditionFormula>
+    <errorMessage>The Prior Status Needs to be RTO Registration and Reason for Cancellation should not be blank</errorMessage>
+</ValidationRule>

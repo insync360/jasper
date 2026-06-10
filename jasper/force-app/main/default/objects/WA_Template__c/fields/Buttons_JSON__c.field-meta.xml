@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Buttons_JSON__c</fullName>
+    <label>Buttons JSON</label>
+    <type>LongTextArea</type>
+    <length>2048</length>
+    <visibleLines>4</visibleLines>
+    <description>JSON array of buttons, e.g. [{"type":"QUICK_REPLY","text":"Know More"}].</description>
+</CustomField>

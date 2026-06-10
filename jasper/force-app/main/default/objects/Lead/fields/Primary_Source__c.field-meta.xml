@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Primary_Source__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(
+  CASE(
+    TEXT( LeadSource ),
+    &quot;91Wheels&quot;, &quot;x&quot;,
+    &quot;Advertisement&quot;, &quot;x&quot;,
+    &quot;Bike wale&quot;,&quot;x&quot;,
+    &quot;Bike Dekho&quot;, &quot;x&quot;,
+    &quot;BikeWale&quot;, &quot;x&quot;,
+    &quot;Calendly&quot;, &quot;x&quot;,
+    &quot;Campaigns&quot;, &quot;x&quot;,
+    &quot;Car and Bike&quot;, &quot;x&quot;,
+    &quot;CARBIKE360&quot;, &quot;x&quot;,
+    &quot;CRM - Meta HTR&quot;, &quot;x&quot;,
+    &quot;CTI&quot;, &quot;x&quot;,
+    &quot;Email-To-Lead&quot;, &quot;x&quot;,
+    &quot;Facebook&quot;, &quot;x&quot;,
+    &quot;Google&quot;, &quot;x&quot;,
+    &quot;HT Auto&quot;, &quot;x&quot;,
+    &quot;Meta Calls&quot;, &quot;x&quot;,
+    &quot;OzoneTel WhatsApp&quot;, &quot;x&quot;,
+    &quot;Partner&quot;, &quot;x&quot;,
+    &quot;Public Relations&quot;, &quot;x&quot;,
+    &quot;Meta&quot;,&quot;x&quot;,
+    &quot;River Website&quot;, &quot;x&quot;,
+    &quot;ThinkResult&quot;, &quot;x&quot;,
+    &quot;Web&quot;, &quot;x&quot;,
+    &quot;WhatsApp&quot;, &quot;x&quot;,
+    NULL
+  ) = &quot;x&quot;,
+  &quot;Online&quot;,
+  
+  IF(
+    CASE(
+      TEXT(LeadSource ),
+      &quot;Tech Park Activities&quot;, &quot;y&quot;,
+      &quot;Auto Expo&quot;, &quot;y&quot;,
+      &quot;Theatre Campaigns&quot;, &quot;y&quot;,
+      &quot;College activities&quot;, &quot;y&quot;,
+      &quot;Exchange Mela&quot;, &quot;y&quot;,
+      &quot;RWA&quot;, &quot;y&quot;,
+      &quot;Mall Activities&quot;, &quot;y&quot;,
+      &quot;Others&quot;, &quot;y&quot;,
+      &quot;Other&quot;, &quot;y&quot;,
+      &quot;Outdoor Activations&quot;,&quot;y&quot;,
+      NULL
+    ) = &quot;y&quot;,
+    &quot;Activities&quot;,
+    
+    IF(
+  CASE(
+    TRIM(TEXT(LeadSource)),
+    &quot;Employee Referral&quot;, &quot;z&quot;,
+    &quot;External Referral&quot;, &quot;z&quot;,
+    &quot;Walk-In&quot;, &quot;z&quot;,
+    &quot;Word of Mouth&quot;, &quot;z&quot;,
+    &quot;Word Of Mouth&quot;, &quot;z&quot;,
+    &quot;Word of mouth&quot;, &quot;z&quot;,
+    NULL
+  ) = &quot;z&quot;,
+  &quot;Walk-In&quot;,
+  NULL
+)
+)
+
+  
+)</formula>
+    <label>Primary Source</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

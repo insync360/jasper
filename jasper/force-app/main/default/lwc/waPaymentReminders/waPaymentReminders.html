@@ -1,0 +1,60 @@
+<template>
+    <lightning-card title="Payment Reminders" icon-name="utility:money">
+        <lightning-button slot="actions" label="Refresh" icon-name="utility:refresh"
+            onclick={load} disabled={loading}></lightning-button>
+
+        <div class="slds-p-horizontal_medium slds-p-bottom_medium">
+            <p class="slds-text-color_weak slds-p-bottom_small">
+                Orders awaiting payment. Click <b>Send Reminder</b> to send the customer a WhatsApp payment
+                reminder (with the remaining amount) — sent only when you click, never automatically.
+            </p>
+
+            <lightning-input type="search" label="Search" variant="label-hidden"
+                placeholder="Search by customer, order #, or vehicle" onchange={handleSearch}
+                class="slds-m-bottom_x-small"></lightning-input>
+
+            <template if:true={loading}>
+                <lightning-spinner alternative-text="Loading..." size="small"></lightning-spinner>
+            </template>
+
+            <template if:true={isEmpty}>
+                <div class="slds-box slds-theme_shade slds-text-align_center slds-text-color_weak">
+                    No orders awaiting payment.
+                </div>
+            </template>
+
+            <template if:false={isEmpty}>
+                <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                    <thead>
+                        <tr class="slds-line-height_reset">
+                            <th><div class="slds-truncate">Customer</div></th>
+                            <th><div class="slds-truncate">Order #</div></th>
+                            <th><div class="slds-truncate">Vehicle</div></th>
+                            <th><div class="slds-truncate">Remaining</div></th>
+                            <th><div class="slds-truncate">Status</div></th>
+                            <th><div class="slds-truncate">Action</div></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={filtered} for:item="o">
+                            <tr key={o.id}>
+                                <td><div class="slds-truncate">{o.name}</div></td>
+                                <td><div class="slds-truncate">{o.orderNumber}</div></td>
+                                <td><div class="slds-truncate">{o.vehicle}</div></td>
+                                <td><div class="slds-truncate">{o.remaining}</div></td>
+                                <td><div class="slds-truncate">{o.status}</div></td>
+                                <td>
+                                    <lightning-button label={o.btnLabel} data-id={o.id} onclick={handleSend}
+                                        disabled={o.btnDisabled} variant="brand"></lightning-button>
+                                    <template if:true={o.sending}>
+                                        <lightning-spinner alternative-text="Sending..." size="x-small"></lightning-spinner>
+                                    </template>
+                                </td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </template>
+        </div>
+    </lightning-card>
+</template>

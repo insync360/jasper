@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Phone_number_must_be_didgit_Walkin</fullName>
+    <active>false</active>
+    <errorConditionFormula>AND(
+    ISPICKVAL( LeadSource , &quot;Walk-In&quot;),  
+    OR(
+        LEN( Phone ) &lt;&gt; 10,  
+        NOT(ISNUMBER( Phone ))
+    )
+)</errorConditionFormula>
+    <errorDisplayField>Phone</errorDisplayField>
+    <errorMessage>The phone number must be exactly 10 digits and contain only numbers</errorMessage>
+</ValidationRule>

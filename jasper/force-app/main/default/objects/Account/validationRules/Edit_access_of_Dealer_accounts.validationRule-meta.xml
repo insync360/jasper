@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Edit_access_of_Dealer_accounts</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+    ISCHANGED( Type ),
+    NOT(ISPICKVAL(Type, &quot;Customer&quot;)),
+    $Profile.Name &lt;&gt; &quot;System Administrator&quot;
+)</errorConditionFormula>
+    <errorMessage>You Don&apos;t have the access to change the details in this account</errorMessage>
+</ValidationRule>

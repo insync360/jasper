@@ -1,0 +1,13 @@
+{
+  "name": "jasper_platinum_spotlight",
+  "language": "en",
+  "category": "MARKETING",
+  "components": [
+    {
+      "type": "BODY",
+      "text": "Hi {{1}}! ✨ Our Platinum pick for you: the {{2}}, at {{3}}. A premium choice in limited stock at Jasper Industries — reply here to reserve yours or book a test drive before it's gone!",
+      "example": { "body_text": [["Ravi", "Tata Harrier", "₹15,49,000"]] }
+    },
+    { "type": "FOOTER", "text": "Jasper Industries" }
+  ]
+}

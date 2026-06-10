@@ -1,0 +1,79 @@
+<template>
+    <lightning-card title="Vehicle Promos — Price Alerts & Platinum Spotlight" icon-name="utility:promotions">
+        <div class="slds-p-horizontal_medium slds-p-bottom_medium">
+            <p class="slds-text-color_weak slds-p-bottom_small">
+                Choose a template and a vehicle, pick recipients, and send. The vehicle's live price is
+                filled into the template automatically (templates using name + vehicle + price variables).
+            </p>
+
+            <lightning-combobox label="Template" value={selectedTemplate} options={templateOptions}
+                onchange={handleTemplate} placeholder="Choose an approved template"></lightning-combobox>
+
+            <div class="slds-m-top_small">
+                <lightning-input type="checkbox" label="Platinum stock only" checked={platinumOnly}
+                    onchange={handlePlatinumToggle}></lightning-input>
+            </div>
+
+            <div class="slds-m-top_small">
+                <template if:true={noVehicles}>
+                    <div class="slds-box slds-theme_shade slds-text-color_weak">
+                        No platinum vehicles found. Tick <b>Platinum Stock</b> on a Vehicle record, or uncheck
+                        "Platinum stock only" above.
+                    </div>
+                </template>
+                <template if:false={noVehicles}>
+                    <lightning-combobox label="Vehicle" value={vehicleId} options={vehicleOptions}
+                        onchange={handleVehicle} placeholder="Choose a vehicle"></lightning-combobox>
+                </template>
+            </div>
+
+            <div class="slds-grid slds-grid_align-spread slds-grid_vertical-align-center slds-m-top_medium">
+                <h3 class="slds-text-heading_small">Recipients (enquiry leads)</h3>
+                <span class="slds-badge">{selectedCount} selected</span>
+            </div>
+
+            <div class="slds-grid slds-grid_vertical-align-center slds-m-top_x-small">
+                <lightning-input type="checkbox" label="🔥 Hot prospects only" checked={hotOnly}
+                    onchange={handleHotToggle}></lightning-input>
+                <span class="slds-m-left_medium slds-text-body_small slds-text-color_weak">{hotCount} hot</span>
+            </div>
+
+            <lightning-input type="search" label="Search recipients" variant="label-hidden"
+                placeholder="Search by name, phone, or status" onchange={handleSearch}
+                class="slds-m-vertical_x-small"></lightning-input>
+
+            <template if:true={loadingRecipients}>
+                <lightning-spinner alternative-text="Loading..." size="small"></lightning-spinner>
+            </template>
+
+            <template if:false={loadingRecipients}>
+                <div class="slds-box slds-box_x-small slds-m-bottom_small">
+                    <lightning-input type="checkbox" label="Select all (filtered)" checked={allFilteredSelected}
+                        onchange={handleSelectAll}></lightning-input>
+                </div>
+                <div class="reclist">
+                    <template for:each={filteredRecipients} for:item="r">
+                        <div key={r.key} class="slds-grid slds-grid_vertical-align-center slds-p-vertical_xx-small recrow">
+                            <lightning-input type="checkbox" data-id={r.id} checked={r.checked}
+                                onchange={handleToggle} variant="label-hidden"></lightning-input>
+                            <span class="slds-m-left_small slds-text-body_regular">{r.name}</span>
+                            <template if:true={r.hot}><span class="slds-m-left_x-small">🔥</span></template>
+                            <span class="slds-m-left_small slds-text-body_small slds-text-color_weak">{r.phone} · {r.info}</span>
+                        </div>
+                    </template>
+                </div>
+            </template>
+
+            <div class="slds-m-top_medium">
+                <lightning-button variant="brand" label="Send" icon-name="utility:send"
+                    onclick={handleSend} disabled={sendDisabled}></lightning-button>
+                <template if:true={sending}>
+                    <lightning-spinner alternative-text="Sending..." size="small"></lightning-spinner>
+                </template>
+                <template if:true={result}>
+                    <span class="slds-m-left_medium slds-text-body_regular">{result}</span>
+                </template>
+            </div>
+        </div>
+    </lightning-card>
+</template>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Accessories_Discount_Description__c</fullName>
+    <inlineHelpText>Discount will be added to the total price of accessories/ Parts.</inlineHelpText>
+    <label>Accessories/Parts Discount Description</label>
+    <length>32768</length>
+    <trackHistory>false</trackHistory>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

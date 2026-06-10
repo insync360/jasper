@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Follow_Up__c</fullName>
+    <label>Follow Up</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Follow up 1</fullName>
+                <default>false</default>
+                <label>Follow up 1</label>
+            </value>
+            <value>
+                <fullName>Follow up 2</fullName>
+                <default>false</default>
+                <label>Follow up 2</label>
+            </value>
+            <value>
+                <fullName>Follow Up 3</fullName>
+                <default>false</default>
+                <label>Follow Up 3</label>
+            </value>
+            <value>
+                <fullName>1st Follow up</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>1st Follow up</label>
+            </value>
+            <value>
+                <fullName>2nd Follow up</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>2nd Follow up</label>
+            </value>
+            <value>
+                <fullName>3rd Follow up</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>3rd Follow up</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Follow_Up__c</fullName>
+    <label>Follow Up</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Follow up 1</fullName>
+                <default>false</default>
+                <label>Follow up 1</label>
+            </value>
+            <value>
+                <fullName>Follow up 2</fullName>
+                <default>false</default>
+                <label>Follow up 2</label>
+            </value>
+            <value>
+                <fullName>Follow Up 3</fullName>
+                <default>false</default>
+                <label>Follow Up 3</label>
+            </value>
+            <value>
+                <fullName>Follow up 4</fullName>
+                <default>false</default>
+                <label>Follow up 4</label>
+            </value>
+            <value>
+                <fullName>Follow up 5</fullName>
+                <default>false</default>
+                <label>Follow up 5</label>
+            </value>
+            <value>
+                <fullName>Follow up 6</fullName>
+                <default>false</default>
+                <label>Follow up 6</label>
+            </value>
+            <value>
+                <fullName>Follow up 7</fullName>
+                <default>false</default>
+                <label>Follow up 7</label>
+            </value>
+            <value>
+                <fullName>Follow up 8</fullName>
+                <default>false</default>
+                <label>Follow up 8</label>
+            </value>
+            <value>
+                <fullName>Follow up 9</fullName>
+                <default>false</default>
+                <label>Follow up 9</label>
+            </value>
+            <value>
+                <fullName>Follow up 10</fullName>
+                <default>false</default>
+                <label>Follow up 10</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

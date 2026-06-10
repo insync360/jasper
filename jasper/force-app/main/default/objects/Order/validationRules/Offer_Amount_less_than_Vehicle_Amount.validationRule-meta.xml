@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Offer_Amount_less_than_Vehicle_Amount</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND( NOT(ISNEW()) , (Vehicle_Subtotal__c  &lt;  Offers_Amount__c))</errorConditionFormula>
+    <errorDisplayField>Offers_Amount__c</errorDisplayField>
+    <errorMessage>Offer amount must be less than the Total price of the Vehicle</errorMessage>
+</ValidationRule>

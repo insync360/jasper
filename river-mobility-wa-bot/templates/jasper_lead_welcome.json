@@ -1,0 +1,20 @@
+{
+  "name": "jasper_lead_welcome",
+  "language": "en",
+  "category": "MARKETING",
+  "components": [
+    {
+      "type": "BODY",
+      "text": "Hi {{1}}, welcome to Jasper Industries! 🚛 Thank you for your interest. We are your authorized Tata commercial vehicle dealer since 1955 — trucks, buses, pickups, vans and the Ace mini-truck range. Tap below to browse vehicles, check pricing, or book a test drive.",
+      "example": { "body_text": [["Ravi"]] }
+    },
+    { "type": "FOOTER", "text": "Jasper Industries" },
+    {
+      "type": "BUTTONS",
+      "buttons": [
+        { "type": "QUICK_REPLY", "text": "Browse Vehicles" },
+        { "type": "QUICK_REPLY", "text": "Talk to Advisor" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Delivery_Confirmed__c</fullName>
+    <label>Delivery Confirmed by Customer</label>
+    <type>Checkbox</type>
+    <defaultValue>false</defaultValue>
+    <description>Set when the customer confirms delivery via the WhatsApp "Confirm Delivery" button.</description>
+</CustomField>

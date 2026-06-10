@@ -1,0 +1,13 @@
+{
+  "name": "jasper_delivered_congrats",
+  "language": "en",
+  "category": "MARKETING",
+  "components": [
+    {
+      "type": "BODY",
+      "text": "Hi {{1}}, congratulations on your new {{2}}! 🎉🚗 Your order {{3}} has been delivered. Thank you for choosing Jasper Industries — we wish you many happy and safe miles ahead! For any support, just reply here.",
+      "example": { "body_text": [["Ravi", "Tata Nexon", "00109739"]] }
+    },
+    { "type": "FOOTER", "text": "Jasper Industries" }
+  ]
+}

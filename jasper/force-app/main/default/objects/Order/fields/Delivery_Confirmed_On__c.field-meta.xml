@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Delivery_Confirmed_On__c</fullName>
+    <label>Delivery Confirmed On</label>
+    <type>DateTime</type>
+    <required>false</required>
+    <description>When the customer confirmed delivery via WhatsApp.</description>
+</CustomField>

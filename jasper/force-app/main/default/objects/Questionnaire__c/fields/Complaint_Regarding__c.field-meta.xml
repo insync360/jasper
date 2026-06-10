@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Complaint_Regarding__c</fullName>
+    <label>Complaint Regarding</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Product</fullName>
+                <default>false</default>
+                <label>Product</label>
+            </value>
+            <value>
+                <fullName>Service Experience</fullName>
+                <default>false</default>
+                <label>Service Experience</label>
+            </value>
+            <value>
+                <fullName>VAS (RSA/EW)</fullName>
+                <default>false</default>
+                <label>VAS (RSA/EW)</label>
+            </value>
+            <value>
+                <fullName>Parts</fullName>
+                <default>false</default>
+                <label>Parts</label>
+            </value>
+            <value>
+                <fullName>Service Cost</fullName>
+                <default>false</default>
+                <label>Service Cost</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

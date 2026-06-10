@@ -1,0 +1,45 @@
+.case {
+    border-left: 4px solid #c9c7c5;
+}
+.reason-badge {
+    background: #fef6e6;
+    color: #a86403;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 10px;
+    white-space: nowrap;
+}
+.note {
+    font-style: italic;
+    color: #54698d;
+}
+.analysis {
+    background: #f3f9ff;
+    border: 1px solid #d8e6f6;
+    border-radius: 6px;
+}
+.msg {
+    background: #f3faf5;
+    border-left: 3px solid #2e844a;
+    border-radius: 4px;
+}
+.recov {
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 10px;
+    white-space: nowrap;
+}
+.recov.high {
+    background: #ebf7e6;
+    color: #2e844a;
+}
+.recov.medium {
+    background: #fef6e6;
+    color: #a86403;
+}
+.recov.low {
+    background: #fde9e6;
+    color: #c23934;
+}

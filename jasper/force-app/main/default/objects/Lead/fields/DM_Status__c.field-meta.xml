@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DM_Status__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(
+    AND(Test_Ride_Given__c = FALSE, TODAY() - DATEVALUE(CreatedDate) &gt; 21),
+    &quot;Cold&quot;,
+    IF(
+        AND(Test_Ride_Given__c = TRUE, ISPICKVAL(Status, &quot;Closed - Lost&quot;)),
+        &quot;Nurture&quot;,
+        IF(
+            AND(Test_Ride_Given__c = FALSE, NOT(ISBLANK(BookingId__c)), TODAY() - DATEVALUE(CreatedDate) &lt;= 21),
+            &quot;HOT&quot;,
+            IF(
+                Test_Ride_Given__c = TRUE,
+                &quot;WARM&quot;,
+                &quot;&quot;
+            )
+        )
+    )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>DM Status</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

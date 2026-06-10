@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Spare_Vehicel_Odo_Meter_Reading</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND (Spare_Vehicle_Odo_Reading__c &gt;  Spare_Vehicle_Odo_Readings__c,  NOT(ISBLANK(Spare_Vehicle_Odo_Reading__c)) , NOT(ISBLANK(Spare_Vehicle_Odo_Readings__c))
+
+)</errorConditionFormula>
+    <errorDisplayField>Spare_Vehicle_Odo_Readings__c</errorDisplayField>
+    <errorMessage>The Returned Spare Vehicle Odo Reading must be greater than the Delivered Spare Vehicle  Odo Readings</errorMessage>
+</ValidationRule>

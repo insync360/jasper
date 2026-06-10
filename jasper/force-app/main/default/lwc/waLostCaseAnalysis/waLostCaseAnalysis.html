@@ -1,0 +1,91 @@
+<template>
+    <lightning-card title="AI Lost-Case Analysis" icon-name="utility:high_velocity_sales">
+        <lightning-button slot="actions" label="Refresh" icon-name="utility:refresh"
+            onclick={loadCases} disabled={loading}></lightning-button>
+
+        <div class="slds-p-horizontal_medium slds-p-bottom_medium">
+            <p class="slds-text-color_weak slds-p-bottom_small">
+                Each lost lead is analysed individually. Click <b>Analyse Now</b> on a case to get an AI verdict,
+                recoverability and a win-back action — the result is saved on the lead so it is kept.
+            </p>
+
+            <template if:true={loading}>
+                <div class="slds-p-vertical_large slds-align_absolute-center">
+                    <lightning-spinner alternative-text="Loading..." size="small"></lightning-spinner>
+                </div>
+            </template>
+
+            <template if:true={error}>
+                <div class="slds-box slds-theme_warning slds-m-bottom_small">{error}</div>
+            </template>
+
+            <template if:true={isEmpty}>
+                <div class="slds-box slds-theme_shade slds-text-align_center slds-text-color_weak">
+                    No lost leads found (Status = &quot;Close lost&quot;).
+                </div>
+            </template>
+
+            <template if:true={hasCases}>
+                <p class="slds-text-title slds-m-bottom_small">{count} lost cases</p>
+
+                <template for:each={cases} for:item="c">
+                    <div key={c.id} class="slds-box slds-box_small slds-m-bottom_small case">
+                        <div class="slds-grid slds-grid_align-spread slds-grid_vertical-align-center">
+                            <div>
+                                <span class="slds-text-heading_small">{c.name}</span>
+                                <span class="reason-badge slds-m-left_x-small">{c.reason}</span>
+                                <div class="slds-text-body_small slds-text-color_weak slds-m-top_xxx-small">{c.meta}</div>
+                            </div>
+                            <lightning-button variant="brand" label={c.btnLabel} icon-name="utility:einstein"
+                                data-id={c.id} onclick={handleAnalyze} disabled={c.analyzing}></lightning-button>
+                        </div>
+
+                        <template if:true={c.hasNote}>
+                            <p class="slds-text-body_small slds-m-top_x-small note">&ldquo;{c.note}&rdquo;</p>
+                        </template>
+
+                        <template if:true={c.analyzing}>
+                            <div class="slds-p-vertical_small slds-grid slds-grid_vertical-align-center">
+                                <lightning-spinner alternative-text="Analysing..." size="x-small"></lightning-spinner>
+                                <span class="slds-p-left_large slds-text-color_weak slds-text-body_small">
+                                    Analysing this case…
+                                </span>
+                            </div>
+                        </template>
+
+                        <template if:true={c.hasAnalysis}>
+                            <div class="analysis slds-m-top_small slds-p-around_small">
+                                <div class="slds-grid slds-grid_align-spread slds-m-bottom_x-small">
+                                    <strong>AI verdict</strong>
+                                    <span class={c.recovClass}>{c.recoverability} recoverability</span>
+                                </div>
+                                <p class="slds-m-bottom_x-small">{c.verdict}</p>
+
+                                <template if:true={c.hasFactors}>
+                                    <ul class="slds-list_dotted slds-m-bottom_x-small">
+                                        <template for:each={c.factors} for:item="f">
+                                            <li key={f.key} class="slds-text-body_small">{f.text}</li>
+                                        </template>
+                                    </ul>
+                                </template>
+
+                                <p class="slds-text-body_small slds-m-bottom_x-small">
+                                    <b>Win-back:</b>&nbsp;{c.winBackAction}
+                                </p>
+
+                                <template if:true={c.hasMessage}>
+                                    <div class="msg slds-p-around_x-small slds-m-bottom_x-small">
+                                        <span class="slds-text-body_small slds-text-color_weak">Suggested WhatsApp message</span>
+                                        <p class="slds-text-body_small">{c.suggestedMessage}</p>
+                                    </div>
+                                </template>
+
+                                <p class="slds-text-body_small slds-text-color_weak">Analysed {c.analyzedDate}</p>
+                            </div>
+                        </template>
+                    </div>
+                </template>
+            </template>
+        </div>
+    </lightning-card>
+</template>

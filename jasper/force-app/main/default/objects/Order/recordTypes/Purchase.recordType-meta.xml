@@ -1,0 +1,476 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Purchase</fullName>
+    <active>true</active>
+    <label>Purchase</label>
+    <picklistValues>
+        <picklist>ADD_On__c</picklist>
+        <values>
+            <fullName>Engine Protection cover</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Key Protection</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Passenger cover</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Roadside Assistance cover</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tyre Protection cover</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Approval_Statuses__c</picklist>
+        <values>
+            <fullName>Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pending</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rejected</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Cancellation_Request_Status__c</picklist>
+        <values>
+            <fullName>Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rejected</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>EW_Success__c</picklist>
+        <values>
+            <fullName>Failed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pending</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Success</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Finance_Name__c</picklist>
+        <values>
+            <fullName>Arihant Credit Corporation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bajaj Finance Limited</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bank Of India</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bank Of Maharashtra</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bank of Baroda</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bike Bazaar</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Canara Bank</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Central Bank of India</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ESAF Small Finance Bank Ltd</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EVEREST FINANCE COMPANY</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ecofy Finance Private Limited</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ernakulam District Police Credit Co-Operative Society LTD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FACT CD Employees Co-Operative Credit Society LTD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gadhinglaj urban co-opertive bank</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Greaves Finance Limited</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hubballi Saraku SSPS Niyamit</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ICICI Bank Limited</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IDBI BANK LTD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>INDIAN BANK %28BRANCH%3A HARBOUR%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>INDIAN BANK - MADHAVARAM BRANCH</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>INDIAN OVERSEAS BANK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>J %26 K Bank</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Janaseva Cooperative Credit Society Ltd</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>KERALA GRAMIN BANK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Karnataka Bank Ltd</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Karnataka Vikas Grameena Bank</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Kerala State Backward Classes Development Corporation Ltd%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Kodagu dcc bank Private limited</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LIC OF INDIA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MDCC Bank Limited</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SRI HINGULAMBIKA CREDIT CO-OPERATIVE SOCIETY LTD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Saraswat CO-OP Bank LTD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shriram Finance Limited</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sri Vasavamba Co-operative Bank Ltd</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>THE S%2ES%2EK%2E COOPERATIVE BANK LTD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>The Federal Bank LTD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>The Kerala High Court Employees Credit CO-OP Society</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>The Mysore Merchants Co-operative Bank Ltd%2E</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Order_Source__c</picklist>
+        <values>
+            <fullName>Salesforce</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Website</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Order_Status__c</picklist>
+        <values>
+            <fullName>ALLOTMENT_IN_PROCESS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BOOKING_CONFIRMED</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DELIVERED</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FULLY_REFUNDED</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ORDER_CONFIRMED</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>REFUND_REQUESTED</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>REGISTRATION_IN_PROCESS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>VEHICLE_ALLOTED</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Payment_Method__c</picklist>
+        <values>
+            <fullName>Bank Loan%2FAuto Loan</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cash Payment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Credit Card</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dealer Financing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Personal Loan</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Payment_Status__c</picklist>
+        <values>
+            <fullName>Completed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>In Progress</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pending</fullName>
+            <default>true</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>RSA_Subscription_Creation_Status__c</picklist>
+        <values>
+            <fullName>Failed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pending</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Success</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>RSA_Success__c</picklist>
+        <values>
+            <fullName>Failed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pending</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Success</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Refund_Status__c</picklist>
+        <values>
+            <fullName>Completed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Requested</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Status</picklist>
+        <values>
+            <fullName>Activated</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Back Order</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Delivered</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dispatch</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Invoice Generation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Order Cancelled</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PO Payment Pending</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Packing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Preparing Dispatch</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Submitted to Finance</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Status__c</picklist>
+        <values>
+            <fullName>Accepted</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Payment Pending</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Processing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RTO Registration</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Vehicle Delivered</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Tenure_Type__c</picklist>
+        <values>
+            <fullName>Month</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Year</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Type</picklist>
+        <values>
+            <fullName>Accessories</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Add-ons</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Parts</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Vehicle</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Vehicle_Colour__c</picklist>
+        <values>
+            <fullName>Monsoon Blue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Spring Yellow</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Summer Red</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Waiting_Periods__c</picklist>
+        <values>
+            <fullName>Days</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Months</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Weeks</fullName>
+            <default>true</default>
+        </values>
+    </picklistValues>
+</RecordType>
